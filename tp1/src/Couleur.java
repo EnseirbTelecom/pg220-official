@@ -30,35 +30,12 @@ class Couleur {
 		return r;
 	}
 
-	void setR(int r) {
-		this.r = r;
-	}
-
 	int getG() {
 		return g;
 	}
 
-	void setG(int g) {
-		this.g = g;
-	}
-
 	int getB() {
 		return b;
-	}
-
-	void setB(int b) {
-		this.b = b;
-	}
-
-	public boolean equals(Object o) {
-		if (o == this)
-			return true;
-		else if (o instanceof Couleur == false)
-			return false;
-		else {
-			Couleur c = (Couleur) o;
-			return c.r == this.r && c.g == this.g && c.b == this.b;
-		}
 	}
 
 	public String toString() {

@@ -19,19 +19,22 @@ class Droite extends ElementRepere {
 		return this.origine;
 	}
 
-	void setOrigine(Point origine) {
-		this.origine = origine;
-	}
-
 	Point getDestination() {
 		return this.destination;
 	}
 
-	void setDestination(Point destination) {
-		this.destination = destination;
+	public boolean equals(Object o) {
+		if (o == this)
+			return true;
+		else if (o instanceof Droite == false)
+			return false;
+		else {
+			Droite d = (Droite) o;
+			return d.origine.equals(this.origine) && d.destination.equals(this.destination);
+		}
 	}
 
-    public String toString() {
+	public String toString() {
 		return "Droite (" + this.origine.getX() + "," + this.origine.getY() + ") -> (" +
 				this.destination.getX() + "," + this.destination.getY() + "), " + super.toString();
 	}

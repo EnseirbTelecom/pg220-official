@@ -13,7 +13,6 @@ public class Main {
 		Couleur c2 = new Couleur(10, 10, 10);
 		assertTrue("Constructeur Couleur avec paramètres", c2.getR() == 10 && c2.getG() == 10 && c2.getB() == 10);
 		assertTrue("Couleur toString", new Couleur().toString().equals("couleur : (0,0,0)"));
-		assertTrue("Couleur equals", new Couleur().equals(new Couleur()));
 		assertTrue("Couleur ROUGE statique", Couleur.ROUGE.getR() == 255 && Couleur.ROUGE.getG() == 0 && Couleur.ROUGE.getB() == 0);
 		Couleur r = Couleur.auHasard();
 		assertTrue("Couleur au hasard", r != null);
@@ -55,6 +54,7 @@ public class Main {
 		Point p2 = new Point("point", c, 10, 10);
 		assertTrue("Constructeur Point avec paramètres", p2.getX() == 10 && p2.getY() == 10);
 		assertTrue("Point toString", p2.toString() .equals("Point (10,10), couleur : (0,0,0), titre : point"));
+		assertTrue("Point equals", new Point().equals(new Point()));
 
 		category("Droite");
 		assertTrue("Héritage Droite ElementRepere", Droite.class.getSuperclass().equals(ElementRepere.class));
@@ -63,6 +63,7 @@ public class Main {
 		Droite d2 = new Droite("droite", c, p1, p2);
 		assertTrue("Constructeur Droite avec paramètres", d2.getOrigine() == p1 && d2.getDestination() == p2);
 		assertTrue("Droite toString", d2.toString() .equals("Droite (0,0) -> (10,10), couleur : (0,0,0), titre : droite"));
+		assertTrue("Droite equals", new Droite().equals(new Droite()));
 	}
 
 	public static void checkStep4() {
@@ -73,16 +74,19 @@ public class Main {
 		ens.ajouter(p);
 		assertTrue("EnsembleElementRepere taille 1", ens.taille() == 1);
 		assertTrue("EnsembleElementRepere element 1", ens.elements()[0] == p);
+		Point doublon = new Point();
+		ens.ajouter(doublon);
+		assertTrue("EnsembleElementRepere taille doublon", ens.taille() == 1);
 		Droite d = new Droite();
 		ens.ajouter(d);
 		assertTrue("EnsembleElementRepere taille 2", ens.taille() == 2);
 		assertTrue("EnsembleElementRepere element 2", ens.elements()[1] == d);
 		Couleur c = new Couleur();
-		for (int i = 2; i < 1000000; i++ ) {
+		for (int i = 2; i < 50000; i++ ) {
 			ens.ajouter(new Point("point", c, i, i));
 		}
-		assertTrue("EnsembleElementRepere taille 1000000", ens.taille() == 1000000);
-		assertTrue("EnsembleElementRepere element 1000000", ((Point) ens.elements()[1000000 - 1]).getX() == 1000000 - 1);
+		assertTrue("EnsembleElementRepere taille 50000", ens.taille() == 50000);
+		assertTrue("EnsembleElementRepere element 50000", ((Point) ens.elements()[50000 - 1]).getX() == 50000 - 1);
 
 		category("Repere");
 		Repere r = new Repere();
