@@ -21,17 +21,19 @@ class Point {
 + Point()
 + Point(String titre, Couleur c, int x, int y)
 + public String toString()
++ public boolean equals(Object o)
 + int getX()
 + int getY()
 }
 ElementRepere <|-- Droite
 class Droite {
-+ double getLongueur()
-+ public String toString()
 + Droite()
 + Droite(String titre, Couleur c, Point origine, Point destination)
 + Point getOrigine()
 + Point getDestination()
++ public boolean equals(Object o)
++ public String toString()
++ double getLongueur()
 }
 Droite "*" --> "1" Point : origine
 Droite "*" --> "1" Point : destination
