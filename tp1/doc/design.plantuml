@@ -1,0 +1,75 @@
+@startuml design_tp1.png
+abstract class ElementAvecNom {
+- String titre
++ ElementAvecNom()
++ ElementAvecNom(String titre)
++ public String toString()
++ String getTitre()
+}
+abstract class ElementRepere {
++ ElementRepere()
++ ElementRepere(String titre, Couleur couleur)
++ public String toString()
++ String getCouleur()
+}
+ElementAvecNom <|-- Axe
+ElementAvecNom <|-- ElementRepere
+ElementRepere <|-- Point
+class Point {
+- int x
+- int y
++ Point()
++ Point(String titre, Couleur c, int x, int y)
++ public String toString()
++ int getX()
++ int getY()
+}
+ElementRepere <|-- Droite
+class Droite {
++ double getLongueur()
++ public String toString()
++ Droite()
++ Droite(String titre, Couleur c, Point origine, Point destination)
++ Point getOrigine()
++ Point getDestination()
+}
+Droite "*" --> "1" Point : origine
+Droite "*" --> "1" Point : destination
+class Couleur {
++ {static} Couleur NOIR
++ {static} Couleur BLANC
++ {static} Couleur ROUGE
++ {static} Couleur VERT
++ {static} Couleur BLEU
+- int r
+- int g
+- int b
++ {static} Couleur auHasard()
++ Couleur()
++ Couleur(int r, int g, int b)
++ public String toString()
++ int getR()
++ int getG()
++ int getB()
+}
+ElementRepere "*" *-- "1" Couleur : couleur
+class Axe {
+- int taille
++ public String toString()
++ Axe()
++ Axe(String titre, int taille)
+}
+class EnsembleElementRepere {
++ EnsembleElementRepere()
++ ajouter(ElementRepere e)
++ ElementRepere[] elements()
++ int taille()
+}
+EnsembleElementRepere "1" *-- "*" ElementRepere : elements
+class Repere {
++ Repere()
++ ajouter(ElementRepere e)
++ public String toString()
+}
+Repere "1" *-- "1" EnsembleElementRepere : elements
+@enduml
