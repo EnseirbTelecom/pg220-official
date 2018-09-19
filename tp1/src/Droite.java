@@ -26,12 +26,13 @@ class Droite extends ElementRepere {
 	public boolean equals(Object o) {
 		if (o == this)
 			return true;
-		else if (o instanceof Droite == false)
+		if (o == null)
 			return false;
-		else {
-			Droite d = (Droite) o;
-			return d.origine.equals(this.origine) && d.destination.equals(this.destination);
-		}
+		if (o instanceof Droite == false)
+			return false;
+		Droite d = (Droite) o;
+		return (d.origine.equals(this.origine) && d.destination.equals(this.destination)) || 
+				(d.origine.equals(this.destination) && d.destination.equals(this.origine));
 	}
 
 	public String toString() {

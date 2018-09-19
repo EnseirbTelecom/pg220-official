@@ -26,12 +26,12 @@ class Point extends ElementRepere {
 	public boolean equals(Object o) {
 		if (o == this)
 			return true;
-		else if (o instanceof Point == false)
+		if (o == null)
 			return false;
-		else {
-			Point p = (Point) o;
-			return p.x == this.x && p.y == this.y;
-		}
+		if (!(o instanceof Point))
+			return false;
+		Point p = (Point) o;
+		return p.x == this.x && p.y == this.y;
 	}
 
 	public String toString() {

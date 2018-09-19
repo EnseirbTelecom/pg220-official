@@ -3,7 +3,7 @@ import java.util.Comparator;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		performSteps();
+		checkAllSteps();
 	}
 
 	public static void checkStep1() {
@@ -55,6 +55,7 @@ public class Main {
 		assertTrue("Constructeur Point avec paramètres", p2.getX() == 10 && p2.getY() == 10);
 		assertTrue("Point toString", p2.toString() .equals("Point (10,10), couleur : (0,0,0), titre : point"));
 		assertTrue("Point equals", new Point().equals(new Point()));
+		assertFalse("Point equals false", new Point().equals(null));
 
 		category("Droite");
 		assertTrue("Héritage Droite ElementRepere", Droite.class.getSuperclass().equals(ElementRepere.class));
@@ -64,6 +65,9 @@ public class Main {
 		assertTrue("Constructeur Droite avec paramètres", d2.getOrigine() == p1 && d2.getDestination() == p2);
 		assertTrue("Droite toString", d2.toString() .equals("Droite (0,0) -> (10,10), couleur : (0,0,0), titre : droite"));
 		assertTrue("Droite equals", new Droite().equals(new Droite()));
+		Droite d3 = new Droite("autre droite", c, p2, p1);
+		assertTrue("Droite equals inverse", d2.equals(d3));
+		assertFalse("Droite equals false", new Droite().equals(null));
 	}
 
 	public static void checkStep4() {
@@ -95,7 +99,7 @@ public class Main {
 		assertTrue("Repere toString", r.toString().split("[\n\t]").length == 5);
 	}
 
-	private static void performSteps() throws Exception {
+	private static void checkAllSteps() throws Exception {
 		Method[] methods = Main.class.getDeclaredMethods();
 		for (Method m : methods) {
 			if (m.getName().startsWith("checkStep")) {
@@ -130,6 +134,10 @@ public class Main {
 		} else {
 			failed(msg);
 		}
+	}
+
+	private static void assertFalse(String msg, boolean bool) {
+		assertTrue(msg, !bool);
 	}
 
 	private static final String ANSI_RESET = "\u001B[0m";
