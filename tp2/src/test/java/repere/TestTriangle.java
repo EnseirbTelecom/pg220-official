@@ -44,6 +44,8 @@ public class TestTriangle {
 	public void testEquals() {
 		Triangle t1 = new Triangle(Couleur.noir(), new Point(Couleur.noir(), 1, 0), 
 				new Point(Couleur.noir(), 0, 1), new Point(Couleur.noir(), 1, 1));
+		Triangle t5 = new Triangle(Couleur.noir(), new Point(Couleur.noir(), 1, 0),
+				new Point(Couleur.noir(), 1, 1), new Point(Couleur.noir(), 0, 1));
 		Triangle t2 = new Triangle(Couleur.noir(), new Point(Couleur.noir(), 0, 1), 
 				new Point(Couleur.noir(), 1, 0), new Point(Couleur.noir(), 1, 1));
 		Triangle t3 = new Triangle(Couleur.noir(), new Point(Couleur.noir(), 1, 1), 
@@ -51,6 +53,7 @@ public class TestTriangle {
 		Triangle t4 = new Triangle(Couleur.noir(), new Point(Couleur.noir(), 2, 2), 
 				new Point(Couleur.noir(), 0, 1), new Point(Couleur.noir(), 1, 0));
 		assertEquals(t1, t2);
+		assertEquals(t1, t5);
 		assertEquals(t2, t3);
 		assertEquals(t3, t1);
 		assertNotEquals(t1, t4);
