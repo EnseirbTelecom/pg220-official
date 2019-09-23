@@ -9,7 +9,6 @@ class ElementRepere extends ElementAvecNom {
 	Couleur getCouleur() {
 		return this.couleur;
 	}
-
 	void setCouleur(Couleur couleur) {
 		this.couleur = couleur;
 	}

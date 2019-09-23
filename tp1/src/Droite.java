@@ -5,11 +5,6 @@ class Droite extends ElementRepere {
 	Droite() {
 		this("Droite", Couleur.noir(), new Point(), new Point());
 	}
-	
-	Droite(Point origine, Point destination) {
-		this("Droite", Couleur.noir(), origine, destination);
-	}
-	
 	Droite(String titre, Couleur couleur, Point origine, Point destination) {
 		super(titre, couleur);
 		setOrigine(origine);
@@ -19,7 +14,6 @@ class Droite extends ElementRepere {
 	Point getOrigine() {
 		return this.origine;
 	}
-	
 	void setOrigine(Point origine) {
 		this.origine = origine;
 	}
@@ -27,7 +21,6 @@ class Droite extends ElementRepere {
 	Point getDestination() {
 		return this.destination;
 	}
-	
 	void setDestination(Point destination) {
 		this.destination = destination;
 	}

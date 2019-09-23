@@ -11,11 +11,6 @@ class Point extends ElementRepere {
 	Point() {
 		this("Point", Couleur.noir(), 0, 0);
 	}
-	
-	Point(int x, int y) {
-		this("Point", Couleur.noir(), x, y);
-	}
-	
 	Point(String titre, Couleur couleur, int x, int y) {
 		super(titre, couleur);
 		setX(x);
@@ -28,6 +23,7 @@ class Point extends ElementRepere {
 	void setX(int x) {
 		this.x = rameneDansDomaine(x);
 	}
+	
 	int getY() {
 		return this.y;
 	}

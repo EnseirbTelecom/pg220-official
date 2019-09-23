@@ -35,7 +35,6 @@ class Couleur {
 	Couleur() {
 		this(0, 0, 0);
 	}
-	
 	Couleur(int r, int g, int b) {
 		setR(r);
 		setG(g);
@@ -45,7 +44,6 @@ class Couleur {
 	int getR() {
 		return r;
 	}
-
 	void setR(int r) {
 		this.r = rameneDansDomaine(r);
 	}
@@ -53,7 +51,6 @@ class Couleur {
 	int getG() {
 		return g;
 	}
-	
 	void setG(int g) {
 		this.g = rameneDansDomaine(g);
 	}
@@ -61,7 +58,6 @@ class Couleur {
 	int getB() {
 		return b;
 	}
-	
 	void setB(int b) {
 		this.b = rameneDansDomaine(b);
 	}

@@ -8,7 +8,6 @@ class ElementAvecNom {
 	String getTitre() {
 		return this.titre;
 	}
-
 	void setTitre(String titre) {
 		this.titre = titre;
 	}
