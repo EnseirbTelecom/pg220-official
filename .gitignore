@@ -3,3 +3,5 @@
 .gradle/
 build/
 design_tp1.png
+.project
+.settings/

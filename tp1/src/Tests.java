@@ -1,10 +1,29 @@
+// Classe qui permet de vérifier le code produit dans le TP.
 class Tests {
+	// Point d'entrée qui permet de lancer tous les tests. Au début du TP
+	// certaines lignes de compileront pas (par exemple les lignes relatives
+	// à Droite tant que vous n'avez pas introduit cette class). N'hésitez pas
+	// à les commenter.
+	// L'exécution des tests se base sur un méthode statique verifie qui est
+	// données à la suite de la méthode main.
 	public static void main(String[] args) {
+		// Tests relatifs à la classe Couleur
 		Couleur c = new Couleur(-12, 258, 13);
 		verifie("composante r négative", c.getR() == 0);
 		verifie("composante g supérieure à 255", c.getG() == 255);
 		verifie("composante b normale", c.getB() == 13);
+		Couleur n = c.noir();
+		verifie("couleur noire", n.getR() == 0 && n.getG() == 0 && n.getB() == 0);
+		Couleur w = c.blanc();
+		verifie("couleur blanche", w.getR() == 255 && w.getG() == 255 && w.getB() == 255);
+		Couleur b = c.bleu();
+		verifie("couleur bleue", b.getR() == 0 && b.getG() == 0 && b.getB() == 255);
+		Couleur r = c.rouge();
+		verifie("couleur rouge", r.getR() == 255 && r.getG() == 0 && r.getB() == 0);
+		Couleur v = c.vert();
+		verifie("couleur verte", v.getR() == 0 && v.getG() == 255 && v.getB() == 0);
 
+		// Tests relatifs à la classe Axe
 		Axe x = new Axe("Axe x", -5);
 		Axe y = new Axe("Axe y", 10);
 		verifie("titre axe en minuscules", x.getTitre().equals("AXE X"));

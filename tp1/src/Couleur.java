@@ -4,25 +4,24 @@ class Couleur {
 	int b;
 	
 	static Couleur noir() {
-		return new Couleur(0,0,0);
+		return new Couleur(0, 0, 0);
 	} 
 	static Couleur blanc() {
-		return new Couleur(255,255,255);
+		return new Couleur(255, 255, 255);
 	}
-
 	static Couleur rouge() {
-		return new Couleur(255,0,0);
+		return new Couleur(255, 0, 0);
 	} 
 	static Couleur vert() {
-		return new Couleur(0,255,0);
+		return new Couleur(0, 255, 0);
 	}
-
 	static Couleur bleu() {
-		return new Couleur(0,0,255);
+		return new Couleur(0, 0, 255);
 	} 
 
 	static Couleur auHasard() {
-		return new Couleur((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255));
+		return new Couleur((int) (Math.random() * 255),
+			(int) (Math.random() * 255), (int) (Math.random() * 255));
 	}
 
 	static int rameneDansDomaine(int x) {
