@@ -45,7 +45,7 @@ class Tests {
 		verifie("longueur droite", d1.getLongueur() == 5D);
 		verifie("description droite", d1.description().equals("Droite (0,0) -> (0,5), couleur : (255,255,255)"));
 
-		// Test relatifs à la classe EnsembleElementRepere
+		// Tests relatifs à la classe EnsembleElementRepere
 		EnsembleElementRepere e = new EnsembleElementRepere();
 		verifie("ensemble vide", e.getTailleCourante() == 0);
 		e.ajouterElement(p1);
@@ -54,12 +54,16 @@ class Tests {
 		e.ajouterElement(d1);
 		verifie("taille après ajout de la droite", e.getTailleCourante() == 2);
 		verifie("récupération de la droite", e.recuperer(1) == d1);
+		for (int i = 0; i < 1000; i++)
+			e.ajouterElement(new Point());
+		verifie("taille après ajout de 1000 points", e.getTailleCourante() == 1002);
+		verifie("récupération du dernier élément après ajout de 1000 points", e.recuperer(e.getTailleCourante() - 1) instanceof Point);
 	}
 
 	public static void verifie(String message, boolean condition) {
 		if (condition)
-			System.out.println("CONFORME: " + message);
+			System.out.println("\u001B[32mCONFORME: " + message + "\u001B[0m");
 		else
-			System.out.println("NON CONFORME: " + message);
+			System.out.println("\u001B[31mNON CONFORME: " + message + "\u001B[0m");
 	}
 }
