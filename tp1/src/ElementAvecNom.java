@@ -1,10 +1,5 @@
 class ElementAvecNom {
-	
 	String titre;
-
-	ElementAvecNom() {
-		this.titre = "";
-	}
 	
 	ElementAvecNom(String titre) {
 		this.titre = titre;
@@ -18,8 +13,7 @@ class ElementAvecNom {
 		this.titre = titre;
 	}
 	
-	public String toString() {
-		return "titre : " + this.titre;
+	String description() {
+		return "titre : " + this.getTitre();
 	}
-	
 }

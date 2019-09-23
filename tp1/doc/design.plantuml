@@ -1,77 +1,59 @@
-@startuml design_tp1.png
-abstract class ElementAvecNom {
-- String titre
-+ ElementAvecNom()
-+ ElementAvecNom(String titre)
-+ public String toString()
-+ String getTitre()
+@startuml tp1_uml.png
+class ElementAvecNom {
+  String titre
+  String description()
+  ElementAvecNom(String titre)
 }
-abstract class ElementRepere {
-+ ElementRepere()
-+ ElementRepere(String titre, Couleur couleur)
-+ public String toString()
-+ String getCouleur()
-}
+class ElementRepere
 ElementAvecNom <|-- Axe
 ElementAvecNom <|-- ElementRepere
 ElementRepere <|-- Point
 class Point {
-- int x
-- int y
-+ Point()
-+ Point(String titre, Couleur c, int x, int y)
-+ public String toString()
-+ public boolean equals(Object o)
-+ int getX()
-+ int getY()
+  int x
+  int y
+  String description()
+  Point()
+  Point(String titre, Couleur c, int x, int y)
 }
 ElementRepere <|-- Droite
 class Droite {
-+ Droite()
-+ Droite(String titre, Couleur c, Point origine, Point destination)
-+ Point getOrigine()
-+ Point getDestination()
-+ public boolean equals(Object o)
-+ public String toString()
-+ double getLongueur()
+  double getLongueur()
+  String description()
+  Droite()
+  Droite(String titre, Couleur c, Point start, Point end)
 }
 Droite "*" --> "1" Point : origine
 Droite "*" --> "1" Point : destination
 class Couleur {
-+ {static} Couleur NOIR
-+ {static} Couleur BLANC
-+ {static} Couleur ROUGE
-+ {static} Couleur VERT
-+ {static} Couleur BLEU
-- int r
-- int g
-- int b
-+ {static} Couleur auHasard()
-+ Couleur()
-+ Couleur(int r, int g, int b)
-+ public String toString()
-+ int getR()
-+ int getG()
-+ int getB()
+  {static} Couleur auHasard()
+  {static} Couleur noir()
+  {static} Couleur blanc()
+  {static} Couleur rouge()
+  {static} Couleur vert()
+  {static} Couleur bleu()
+  int r
+  int g
+  int b
+  Couleur()
+  Couleur(int r, int g, int b)
 }
 ElementRepere "*" *-- "1" Couleur : couleur
+class ElementRepere {
+  String description()
+  ElementRepere(String titre, Couleur couleur)
+}
 class Axe {
-- int taille
-+ public String toString()
-+ Axe()
-+ Axe(String titre, int taille)
+  int taille
+  String description()
+  Axe()
+  Axe(String titre, int taille)
 }
 class EnsembleElementRepere {
-+ EnsembleElementRepere()
-+ ajouter(ElementRepere e)
-+ ElementRepere[] elements()
-+ int taille()
+  int tailleCourante
+  int tailleMaximale
+  void ajouter(ElementRepere e)
+  ElementRepere recuperer(int i)
+  EnsembleElementRepere()
 }
 EnsembleElementRepere "1" *-- "*" ElementRepere : elements
-class Repere {
-+ Repere()
-+ ajouter(ElementRepere e)
-+ public String toString()
-}
-Repere "1" *-- "1" EnsembleElementRepere : elements
 @enduml

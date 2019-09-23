@@ -1,16 +1,5 @@
 class ElementRepere extends ElementAvecNom {
-	
 	Couleur couleur;
-	
-	ElementRepere() {
-		super();
-		this.couleur = Couleur.NOIR;
-	}
-	
-	ElementRepere(Couleur couleur) {
-		super();
-		this.couleur = couleur;
-	}
 	
 	ElementRepere(String titre, Couleur couleur) {
 		super(titre);
@@ -25,8 +14,7 @@ class ElementRepere extends ElementAvecNom {
 		this.couleur = couleur;
 	}
 
-	public String toString() {
-		return this.couleur + ", " + super.toString();
+	String description() {
+		return this.getCouleur().description() + ", " + super.description();
 	}
-	
 }

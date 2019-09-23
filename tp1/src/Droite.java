@@ -1,47 +1,44 @@
 class Droite extends ElementRepere {
-
 	Point origine;
 	Point destination;
-
+	
 	Droite() {
-		super();
-		this.origine = new Point();
-		this.destination = new Point("", new Couleur(), 1, 1);
+		this("Droite", Couleur.noir(), new Point(), new Point());
 	}
-
+	
+	Droite(Point origine, Point destination) {
+		this("Droite", Couleur.noir(), origine, destination);
+	}
+	
 	Droite(String titre, Couleur couleur, Point origine, Point destination) {
 		super(titre, couleur);
-		this.origine = origine;
-		this.destination = destination;
+		setOrigine(origine);
+		setDestination(destination);
 	}
-
+	
 	Point getOrigine() {
 		return this.origine;
 	}
-
+	
+	void setOrigine(Point origine) {
+		this.origine = origine;
+	}
+	
 	Point getDestination() {
 		return this.destination;
 	}
-
-	public boolean equals(Object o) {
-		if (o == this)
-			return true;
-		if (o == null)
-			return false;
-		if (o instanceof Droite == false)
-			return false;
-		Droite d = (Droite) o;
-		return (d.origine.equals(this.origine) && d.destination.equals(this.destination)) || 
-				(d.origine.equals(this.destination) && d.destination.equals(this.origine));
+	
+	void setDestination(Point destination) {
+		this.destination = destination;
 	}
 
-	public String toString() {
-		return "Droite (" + this.origine.getX() + "," + this.origine.getY() + ") -> (" +
-				this.destination.getX() + "," + this.destination.getY() + "), " + super.toString();
+	String description() {
+		return "Droite (" + this.getOrigine().getX() + "," + this.getOrigine().getY() + ") -> (" +
+				this.getDestination().getX() + "," + this.getDestination().getY() + "), " + this.getCouleur().description();
 	}
-
+	
 	double getLongueur() {
-		return Math.sqrt(Math.pow(Math.abs(origine.getX() - destination.getX()), 2) +
-				Math.pow(Math.abs(origine.getY() - destination.getY()), 2));
+		return Math.sqrt(Math.pow(Math.abs(this.getOrigine().getX() - this.getDestination().getX()), 2) +
+				Math.pow(Math.abs(this.getOrigine().getY() - this.getDestination().getY()), 2));
 	}
 }

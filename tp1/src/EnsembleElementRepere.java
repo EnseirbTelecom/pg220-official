@@ -1,36 +1,29 @@
 class EnsembleElementRepere {
-
 	ElementRepere[] elements;
-
-	int taille = 0;
-
+	int tailleMaximale = 10;
+	int tailleCourante = 0;
+	
 	EnsembleElementRepere() {
-		elements = new ElementRepere[10];
+		elements = new ElementRepere[tailleMaximale];
 	}
-
-	ElementRepere[] elements() {
-		return elements;
+	
+	ElementRepere recuperer(int index) {
+		return elements[index];
 	}
-
-	void ajouter(ElementRepere element) {
-		for (int i = 0; i < taille; i++) {
-			if (elements[i].equals(element)) {
-				return;
-			}
+	
+	void ajouterElement(ElementRepere element) {
+		if (tailleCourante == tailleMaximale) {
+			tailleMaximale = tailleMaximale * 2;
+			ElementRepere[] tmp = elements.clone();
+			elements = new ElementRepere[tailleMaximale];
+			for (int i = 0; i < tailleCourante; i++)
+				elements[i] = tmp[i];
 		}
-		if (taille == elements.length) {
-			ElementRepere[] newElements = new ElementRepere[taille * 2];
-			for (int i = 0; i < elements.length; i++) {
-				newElements[i] = elements[i];
-			}
-			elements = newElements;
-		}
-		elements[taille] = element;
-		taille++;
+		elements[tailleCourante] = element;
+		tailleCourante++;
 	}
 
-	int taille() {
-		return taille;
+	int getTailleCourante() {
+		return this.tailleCourante;
 	}
-
 }

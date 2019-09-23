@@ -1,20 +1,23 @@
 class Axe extends ElementAvecNom {
-	
 	int taille;
+
+	static int rameneDansDomaine(int x) {
+		if (x < 0)
+			return 0;
+		return x;
+	}
 	
 	Axe() {
-		super();
-		this.taille = 10;
+		this("AXE", 0);
 	}
 	
 	Axe(int taille) {
-		super();
-		this.taille = taille;
+		this("AXE", taille);
 	}
 	
 	Axe(String titre, int taille) {
-		setTitre(titre);
-		this.taille = taille;
+		super(titre.toUpperCase());
+		setTaille(taille);
 	}
 	
 	@Override
@@ -27,10 +30,10 @@ class Axe extends ElementAvecNom {
 	}
 
 	void setTaille(int taille) {
-		this.taille = taille;
+		this.taille = rameneDansDomaine(taille);
 	}
 	
-	public String toString() {
-		return "Axe taille : " + this.taille + ", " + super.toString();
+	String description() {
+		return "Axe taille : " + this.getTaille() + ", " + super.description();
 	}
 }
