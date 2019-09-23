@@ -12,15 +12,15 @@ class Tests {
 		verifie("composante r négative", c.getR() == 0);
 		verifie("composante g supérieure à 255", c.getG() == 255);
 		verifie("composante b normale", c.getB() == 13);
-		Couleur n = c.noir();
+		Couleur n = Couleur.noir();
 		verifie("couleur noire", n.getR() == 0 && n.getG() == 0 && n.getB() == 0);
-		Couleur w = c.blanc();
+		Couleur w = Couleur.blanc();
 		verifie("couleur blanche", w.getR() == 255 && w.getG() == 255 && w.getB() == 255);
-		Couleur b = c.bleu();
+		Couleur b = Couleur.bleu();
 		verifie("couleur bleue", b.getR() == 0 && b.getG() == 0 && b.getB() == 255);
-		Couleur r = c.rouge();
+		Couleur r = Couleur.rouge();
 		verifie("couleur rouge", r.getR() == 255 && r.getG() == 0 && r.getB() == 0);
-		Couleur v = c.vert();
+		Couleur v = Couleur.vert();
 		verifie("couleur verte", v.getR() == 0 && v.getG() == 255 && v.getB() == 0);
 
 		// Tests relatifs à la classe Axe
