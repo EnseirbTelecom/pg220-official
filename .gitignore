@@ -4,4 +4,5 @@
 build/
 design_tp1.png
 .project
+.vscode/
 .settings/
