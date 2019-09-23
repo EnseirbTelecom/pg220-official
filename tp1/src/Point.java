@@ -32,6 +32,6 @@ class Point extends ElementRepere {
 	}
 
 	String description() {
-		return "Point (" + this.getX() + "," + this.getY() + ") " + super.description();
+		return "Point (" + this.getX() + "," + this.getY() + "), " + super.description();
 	}
 }

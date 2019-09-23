@@ -20,10 +20,10 @@ class Droite {
   double getLongueur()
   String description()
   Droite()
-  Droite(String titre, Couleur c, Point start, Point end)
+  Droite(String titre, Couleur c, Point origine, Point destination)
 }
-Droite "*" --> "1" Point : origine
-Droite "*" --> "1" Point : destination
+Droite "1" *-- "1" Point : origine
+Droite "1" *-- "1" Point : destination
 class Couleur {
   {static} Couleur auHasard()
   {static} Couleur noir()
@@ -36,6 +36,7 @@ class Couleur {
   int b
   Couleur()
   Couleur(int r, int g, int b)
+  String description()
 }
 ElementRepere "*" *-- "1" Couleur : couleur
 class ElementRepere {

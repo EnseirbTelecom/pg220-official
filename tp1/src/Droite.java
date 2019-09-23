@@ -27,7 +27,7 @@ class Droite extends ElementRepere {
 
 	String description() {
 		return "Droite (" + this.getOrigine().getX() + "," + this.getOrigine().getY() + ") -> (" +
-				this.getDestination().getX() + "," + this.getDestination().getY() + "), " + this.getCouleur().description();
+				this.getDestination().getX() + "," + this.getDestination().getY() + "), " + this.getCouleur().description() + ", titre : " + this.getTitre();
 	}
 	
 	double getLongueur() {
