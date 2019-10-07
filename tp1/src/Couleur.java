@@ -18,7 +18,6 @@ class Couleur {
 	static Couleur bleu() {
 		return new Couleur(0, 0, 255);
 	} 
-
 	static Couleur auHasard() {
 		return new Couleur((int) (Math.random() * 255),
 			(int) (Math.random() * 255), (int) (Math.random() * 255));

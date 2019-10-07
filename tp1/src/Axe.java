@@ -10,11 +10,6 @@ class Axe extends ElementAvecNom {
 	Axe() {
 		this("AXE", 0);
 	}
-	
-	Axe(int taille) {
-		this("AXE", taille);
-	}
-	
 	Axe(String titre, int taille) {
 		super(titre.toUpperCase());
 		setTaille(taille);
@@ -22,13 +17,12 @@ class Axe extends ElementAvecNom {
 	
 	@Override
 	void setTitre(String titre) {
-		this.titre = titre.toUpperCase();
+		super.setTitre(titre.toUpperCase());
 	}
 	
 	int getTaille() {
 		return this.taille;
 	}
-
 	void setTaille(int taille) {
 		this.taille = rameneDansDomaine(taille);
 	}
