@@ -1,0 +1,115 @@
+@startuml tp2_uml.png
+package java.lang {
+
+class RuntimeException {
+}
+
+}
+
+package repere {
+
+abstract class ElementRepere {
++ {abstract} boolean validePour(Repere r) throws ElementInvalide
++ {abstract} String svg()
++ {abstract} String serialisation()
+}
+
+ElementAvecCouleur <|-- Axe
+ElementAvecCouleur <|-- ElementRepere
+ElementAvecCouleur "*" *-- "1" Couleur : couleur
+
+class Couleur {
+- int r
+- int g
+- int b
++ {static} Couleur auHasard()
++ {static} Couleur noir()
++ {static} Couleur blanc()
++ {static} Couleur rouge()
++ {static} Couleur vert()
++ {static} Couleur bleu()
++ Couleur(int r, int g, int b)
++ String serialisation()
++ String svg()
+}
+
+RuntimeException <|-- ElementInvalide
+RuntimeException <|-- ElementInconsistent
+
+class Axe {
+- String titre
+- int taille
++ Axe(Couleur c, String titre, int taille) throws AxeInconsistent
++ String serialisation();
+}
+
+RuntimeException <|-- AxeInconsistent
+
+class Repere {
+- String titre
++ void ajouter(ElementRepere e)
++ Repere(String titre, Axe x, Axe y)
++ Repere(Reader reader)
++ void dessiner(Writer writer)
++ void sauvegarder(Writer writer)
+}
+
+Repere "*" *-- "1" Axe : x
+Repere "*" *-- "1" Axe : y
+Repere "1" *-- "*" ElementRepere : elements
+
+}
+
+package repere.formes {
+
+ElementRepere <|-- Segment
+Segment "*" *-- "1" Point : origine
+Segment "*" *-- "1" Point : destination
+class Segment {
++ Segment(Couleur c, Point start, Point end) throws ElementInconsistent
++ boolean equals(Object o)
++ int hashCode()
++ boolean validePour(Repere r) throws ElementInvalide
++ String svg()
++ String serialisation()
+}
+
+ElementRepere <|-- Point
+class Point {
+- int x
+- int y
++ Point(Couleur c, int x, int y) throws ElementInconsistent
++ boolean equals(Object o)
++ int hashCode()
++ boolean validePour(Repere r) throws ElementInvalide
++ String svg()
++ String serialisation()
+}
+
+ElementRepere <|-- Cercle
+Cercle "*" *-- "1" Point : centre
+class Cercle {
+- int rayon
++ Cercle(Couleur c, Point centre, int rayon) throws ElementInconsistent
++ boolean equals(Object o)
++ int hashCode()
++ boolean validePour(Repere r) throws ElementInvalide
++ String svg()
++ String serialisation()
+}
+
+ElementRepere <|-- Triangle
+Triangle "*" *-- "1" Point : point1
+Triangle "*" *-- "1" Point : point2
+Triangle "*" *-- "1" Point : point3
+class Triangle {
++ Triangle(Couleur c, Point point1, Point point2, Point point3) throws ElementInconsistent
++ boolean equals(Object o)
++ int hashCode()
++ boolean validePour(Repere r) throws ElementInvalide
++ String svg()
++ String serialisation()
+}
+
+}
+@enduml
