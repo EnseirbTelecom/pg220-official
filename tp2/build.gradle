@@ -1,13 +1,18 @@
 plugins {
-	id 'java'
+    id 'java'
+    id 'com.cosminpolifronie.gradle.plantuml' version '1.6.0'
 }
 
 repositories {
-	jcenter()
+    jcenter()
 }
 
 dependencies {
-	testCompile 'junit:junit:4.12'
+    testCompile 'junit:junit:4.12'
+}
+
+plantUml {
+    render input: 'doc/design.puml', output: 'doc/design.png', format: 'png', withMetadata: false
 }
 
 test {
@@ -15,3 +20,5 @@ test {
         events "passed", "skipped", "failed"
     }
 }
+
+build.dependsOn ':plantUml'
