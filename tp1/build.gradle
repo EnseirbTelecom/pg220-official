@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'application'
     id 'com.cosminpolifronie.gradle.plantuml' version '1.6.0'
 }
 
@@ -9,6 +9,10 @@ repositories {
 
 plantUml {
     render input: 'doc/design.puml', output: 'doc/design.png', format: 'png', withMetadata: false
+}
+
+application {
+    mainClassName = 'Tests'
 }
 
 build.dependsOn ':plantUml'
