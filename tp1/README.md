@@ -2,14 +2,10 @@
 
 Au cours de ce TP, nous allons implémenter les classes `Axe`, `Droite`, `Point`, `EnsembleElementsRepere` et `Couleur`. Avant de détailler le travail à effectuer voici quelques rappels. Tout d’abord, lisez la documentation des classes Java lorsque cela est nécessaire. Pour rappel, recherchez `javadoc NomClasse` sur Google.
 
-(:alert class:secondary:)
 En Java, on place une classe par fichier. Pour l'instant elles doivent se trouver dans le même repertoire, ce qui rend les `import` inutiles. Si la classe est définie comme `class Foo` elle doit se trouver dans le fichier `Foo.java`. N'oubliez pas que les noms de classes (et donc des constructeurs) commencent par une majuscules, tous les autres identifiants commencent par une minuscule.
 Pour compiler un fichier `Foo.java`, utilisez la commande `javac Foo.java` puis lancez le programme avec `java Foo`. La classe que vous exécutez doit contenir une méthode `public static void main(String[] args)` qui est le point d’entrée du programme. Pour compiler plusieurs fichiers ensembles, lancez `javac *.java` ou `javac fichier1.java fichier2.java`.
-(:end_alert:)
 
-(:alert class:warning:)
 Pensez à compiler et tester très rapidement le code que vous écrivez. Pour cela utilisez la classe fourni ci-après qui contient un point d’entrée. Utilisez ce point d’entrée pour compiler et tester le code que vous écrivez. Moins vous êtes sûr de vous, plus souvent vous devez effectuer cette opération.
-(:end_alert:)
 
 La figure ci-dessous détaille la structure des classes que vous devez coder. **Attention, cette structure n'inclus pas, afin de ne pas polluer le schéma, les accesseurs et les mutateurs**. La suite de l’énoncé de TP précise les fonctionnalités que vous devez implémenter. Suivez l'ordre des question quand vous réalisez le TP.
 
@@ -17,7 +13,7 @@ La figure ci-dessous détaille la structure des classes que vous devez coder. **
 
 ## Classe de test
 
-Pour vous aider, voici une [classe](src/main/java/Test.java) qui vous permettra de tester votre programme.
+Pour vous aider, voici une [classe](src/main/java/Tests.java) qui vous permettra de tester votre programme.
 
 ## Fonctionnalités
 
