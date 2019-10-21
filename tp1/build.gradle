@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+    id 'com.cosminpolifronie.gradle.plantuml' version '1.6.0'
+}
+
+repositories {
+    jcenter()
+}
+
+plantUml {
+    render input: 'doc/design.puml', output: 'doc/design.png', format: 'png', withMetadata: false
+}
+
+build.dependsOn ':plantUml'
