@@ -1,12 +1,11 @@
 # TP 2
 
 L’objectif de ce TP est de programmer une bibliothèque complète qui permet de créer des repères comportant plusieurs types d'éléments (segments, points, cercles et triangles). Il est demandé de maximiser la réutilisation de code grâce à l’utilisation du polymorphisme et les redéfinitions de méthodes.
-Ce TP doit être réalisé avec l'IDE Eclipse. La première étape est d'importer le code de test dasn votre projet.
+Ce TP doit être réalisé avec l'IDE Eclipse. La première étape est d'importer le code de [test](src/test/java) dans votre projet.
 
 ## Structure du programme
 
-![Structure du programme](doc/design.pdf){: .img-fluid}
-{: .text-center}
+![Structure du programme](doc/design.png)
 
 ## Fonctionnalités
 
