@@ -1,22 +1,18 @@
 package repere;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 import java.io.StringReader;
 import java.io.StringWriter;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import repere.formes.Cercle;
-import repere.formes.Point;
-import repere.formes.Segment;
-import repere.formes.Triangle;
+import repere.formes.*;
 
 public class TestRepere {
-	
 	@Test
 	public void testAjouter() {
 		Repere r = new Repere("", new Axe(Couleur.noir(), "", 20), new Axe(Couleur.noir(), "", 20));
@@ -98,5 +94,4 @@ public class TestRepere {
 		Set<String> lines = new HashSet<String>(Arrays.asList(w.toString().split("\\n")));
 		assertEquals(linesDef, lines);
 	}
-	
 }

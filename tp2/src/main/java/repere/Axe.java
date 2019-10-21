@@ -1,9 +1,7 @@
 package repere;
 
 public class Axe extends ElementAvecCouleur {
-	
 	private String titre;
-	
 	private int taille;
 
 	public Axe(Couleur couleur, String titre, int taille) throws AxeInconsistent {
@@ -26,5 +24,4 @@ public class Axe extends ElementAvecCouleur {
 	public String serialisation() {
 		return String.format("Axe %d %s %s", taille, couleur.serialisation(), titre);
 	}
-
 }

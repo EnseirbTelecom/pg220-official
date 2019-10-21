@@ -1,13 +1,12 @@
 package repere;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
+
 import repere.formes.Point;
 import repere.formes.Segment;
 
 public class TestSegment {
-	
 	@Test(expected=ElementInconsistent.class)
 	public void testSegmentInconsistent() {
 		new Segment(Couleur.noir(), new Point(Couleur.noir(), 2, 2), new Point(Couleur.noir(), 2, 2));
@@ -35,14 +34,16 @@ public class TestSegment {
 	public void testEquals() {
 		Segment s1 = new Segment(Couleur.noir(), new Point(Couleur.noir(), 1, 0), new Point(Couleur.noir(), 0, 1));
 		Segment s2 = new Segment(Couleur.noir(), new Point(Couleur.noir(), 1, 0), new Point(Couleur.noir(), 0, 1));
-		Segment s3 = new Segment(Couleur.noir(), new Point(Couleur.noir(), 0, 1), new Point(Couleur.noir(), 1, 0));
-		Segment s4 = new Segment(Couleur.noir(), new Point(Couleur.noir(), 0, 1), new Point(Couleur.noir(), 2, 0));
 		assertEquals(s1, s2);
+		Segment s3 = new Segment(Couleur.noir(), new Point(Couleur.noir(), 0, 1), new Point(Couleur.noir(), 1, 0));
 		assertEquals(s1, s3);
 		assertEquals(s2, s3);
+		Segment s4 = new Segment(Couleur.noir(), new Point(Couleur.noir(), 0, 1), new Point(Couleur.noir(), 2, 0));
 		assertNotEquals(s1, s4);
 		assertNotEquals(s2, s4);
 		assertNotEquals(s3, s4);
+		assertNotEquals(s1, null);
+		assertNotEquals(s1, "foo");
 	}
 	
 	@Test

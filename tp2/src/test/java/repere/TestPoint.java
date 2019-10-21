@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 import repere.formes.Point;
 
 public class TestPoint {
-	
 	@Test(expected=ElementInconsistent.class)
 	public void testPointInconsistent1() {
 		new Point(Couleur.noir(), -2, 0);
@@ -34,10 +33,12 @@ public class TestPoint {
 	@Test
 	public void testPointEquals() {
 		Point p1 = new Point(Couleur.noir(), 1, 6);
-		Point p2 = new Point(Couleur.noir(), 6, 1);
 		Point p3 = new Point(Couleur.noir(), 1, 6);
 		assertEquals(p1, p3);
+		Point p2 = new Point(Couleur.noir(), 6, 1);
 		assertNotEquals(p1, p2);
+		assertNotEquals(p1, null);
+		assertNotEquals(p1, "foo");
 	}
 	
 	@Test
@@ -51,5 +52,4 @@ public class TestPoint {
 		Point p1 = new Point(Couleur.noir(), 1, 6);
 		assertEquals("<circle cx='10' cy='60' r='2' style='fill:rgb(0,0,0)'/>", p1.svg());
 	}
-
 }

@@ -1,15 +1,13 @@
 package repere;
 
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-
-import org.junit.Test;
 
 import repere.formes.Cercle;
 import repere.formes.Point;
 
 public class TestCercle {
-	
 	@Test(expected=ElementInconsistent.class)
 	public void testCercleInconsistent1() {
 		new Cercle(Couleur.noir(), new Point(Couleur.noir(), 2, 2), -10);
@@ -50,10 +48,11 @@ public class TestCercle {
 	public void testCercleEquals() throws ElementInvalide {
 		Cercle c1 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 1);
 		Cercle c2 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 1);
-		Cercle c3 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 4);
-		
 		assertEquals(c1, c2);
+		Cercle c3 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 4);
 		assertNotEquals(c1, c3);
+		assertNotEquals(c1, null);
+		assertNotEquals(c1, "foo");
 	}
 	
 	@Test
@@ -68,5 +67,4 @@ public class TestCercle {
 		Cercle c = new Cercle(Couleur.rouge(), new Point(Couleur.noir(), 15, 15), 3);
 		assertEquals("<circle cx='150' cy='150' r='30' style='fill:rgb(255,0,0)'/>", c.svg());
 	}
-	
 }

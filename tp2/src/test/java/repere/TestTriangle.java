@@ -1,15 +1,13 @@
 package repere;
 
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-
-import org.junit.Test;
 
 import repere.formes.Point;
 import repere.formes.Triangle;
 
 public class TestTriangle {
-	
 	@Test(expected=ElementInconsistent.class)
 	public void testTriangleInconsistent1() {
 		new Triangle(Couleur.noir(), new Point(Couleur.noir(), 1 , 1), 
@@ -59,6 +57,8 @@ public class TestTriangle {
 		assertNotEquals(t1, t4);
 		assertNotEquals(t2, t4);
 		assertNotEquals(t3, t4);
+		assertNotEquals(t1, null);
+		assertNotEquals(t3, "foo");
 	}
 	
 	@Test
@@ -73,5 +73,4 @@ public class TestTriangle {
 		Triangle t = new Triangle(Couleur.rouge(), new Point(Couleur.noir(), 5, 5), new Point(Couleur.noir(), 3, 5), new Point(Couleur.noir(), 2, 1));
 		assertEquals("<line x1='50' y1='50' x2='30' y2='50' style='stroke:rgb(255,0,0)'/><line x1='30' y1='50' x2='20' y2='10' style='stroke:rgb(255,0,0)'/><line x1='20' y1='10' x2='50' y2='50' style='stroke:rgb(255,0,0)'/>", t.svg());
 	}
-
 }

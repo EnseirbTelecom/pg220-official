@@ -1,4 +1,4 @@
-@startuml tp2_uml.png
+@startuml design.png
 package java.lang {
 
 class RuntimeException {
