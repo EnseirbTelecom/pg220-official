@@ -16,6 +16,14 @@ import repere.formes.Triangle;
 
 public class Repere {
 
+	private static final String REGEX_COULEUR = "\\[(\\d+),(\\d+),(\\d+)\\]";		
+	private static final Pattern PATTERN_REPERE = Pattern.compile("Repere (.*)");
+	private static final Pattern PATTERN_AXE = Pattern.compile(String.format("Axe (\\d+) %s (.*)", REGEX_COULEUR));
+	private static final Pattern PATTERN_POINT = Pattern.compile(String.format("Point \\((\\d+),(\\d+)\\) %s", REGEX_COULEUR));
+	private static final Pattern PATTERN_SEGMENT = Pattern.compile(String.format("Segment %s %s %s", REGEX_COULEUR, PATTERN_POINT, PATTERN_POINT));
+	private static final Pattern PATTERN_CERCLE = Pattern.compile(String.format("Cercle (\\d+) %s %s", REGEX_COULEUR, PATTERN_POINT));
+	private static final Pattern PATTERN_TRIANGLE = Pattern.compile(String.format("Triangle %s %s %s %s", REGEX_COULEUR, PATTERN_POINT, PATTERN_POINT, PATTERN_POINT));
+
 	private String titre;
 	
 	private Set<ElementRepere> elements;
@@ -31,71 +39,67 @@ public class Repere {
 		this.elements = new HashSet<ElementRepere>();
 	}
 
-	public Repere(Reader reader) throws HorsRepereException {
-		try {
-			String couleurDef = "\\[(\\d+),(\\d+),(\\d+)\\]";
-			
-			Pattern repere = Pattern.compile("Repere (.*)");
-			Pattern axe = Pattern.compile(String.format("Axe (\\d+) %s (.*)", couleurDef));
-			Pattern point = Pattern.compile(String.format("Point \\((\\d+),(\\d+)\\) %s", couleurDef));
-			Pattern segment = Pattern.compile(String.format("Segment %s %s %s", couleurDef, point, point));
-			Pattern cercle = Pattern.compile(String.format("Cercle (\\d+) %s %s", couleurDef, point));
-			Pattern triangle = Pattern.compile(String.format("Triangle %s %s %s %s", couleurDef, point, point, point));
-			
-			BufferedReader r = new BufferedReader(reader);
-			
-			Matcher repereDef = repere.matcher(r.readLine());
-			Matcher xDef = axe.matcher(r.readLine());
-			Matcher yDef = axe.matcher(r.readLine());
-			
-			repereDef.matches();
-			this.titre = repereDef.group(1);
-			xDef.matches();
-			this.x = new Axe(couleurPourMatcher(xDef, 2), xDef.group(5), Integer.parseInt(xDef.group(1)));
-			yDef.matches();
-			this.y = new Axe(couleurPourMatcher(yDef, 2), yDef.group(5), Integer.parseInt(yDef.group(1)));
-			this.elements = new HashSet<ElementRepere>();
-			
-			String line;
-			while ((line = r.readLine()) != null) {
-				if (line.charAt(0) == 'P') {
-					Matcher pDef = point.matcher(line);
-					pDef.matches();
-					ajouter(pointPourMatcher(pDef, 1));
-				} else if (line.charAt(0) == 'S') {
-					Matcher sDef = segment.matcher(line);
-					sDef.matches();
-					Segment s = new Segment(couleurPourMatcher(sDef, 1), pointPourMatcher(sDef, 4),
-							pointPourMatcher(sDef, 9));
-					ajouter(s);
-				} else if (line.charAt(0) == 'C') {
-					Matcher cDef = cercle.matcher(line);
-					cDef.matches();
-					Cercle c = new Cercle(couleurPourMatcher(cDef, 2), pointPourMatcher(cDef, 5), 
-							Integer.parseInt(cDef.group(1)));
-					ajouter(c);
-				} else if (line.charAt(0) == 'T') {
-					Matcher tDef = triangle.matcher(line);
-					tDef.matches();
-					Triangle t = new Triangle(couleurPourMatcher(tDef, 1), pointPourMatcher(tDef, 4),
-							pointPourMatcher(tDef, 9), pointPourMatcher(tDef, 14));
-					ajouter(t);
-				}
-			}
-			
-			r.close();
+	public static Repere charger(Reader reader) throws IOException, HorsRepereException {
+		BufferedReader r = new BufferedReader(reader);
+		Repere repere = chargeRepere(r);
+		chargeElements(repere, r);
+		return repere;
+	}
 
-		} catch (IOException e) {
-			System.err.println(e);
+	private static Repere chargeRepere(BufferedReader r) throws IOException {
+		Matcher repereDef = PATTERN_REPERE.matcher(r.readLine());
+		Matcher xDef = PATTERN_AXE.matcher(r.readLine());
+		Matcher yDef = PATTERN_AXE.matcher(r.readLine());
+		
+		repereDef.matches();
+		String titre = repereDef.group(1);
+		xDef.matches();
+		Axe x = new Axe(couleurPourMatcher(xDef, 2), xDef.group(5), Integer.parseInt(xDef.group(1)));
+		yDef.matches();
+		Axe y = new Axe(couleurPourMatcher(yDef, 2), yDef.group(5), Integer.parseInt(yDef.group(1)));
+		return new Repere(titre, x, y);
+	}
+
+	private static void chargeElements(Repere repere, BufferedReader r) throws IOException, HorsRepereException {
+		String line;
+		while ((line = r.readLine()) != null) {
+			ElementRepere element = null;
+			switch (line.charAt(0)) {
+				case 'P':
+					Matcher pDef = PATTERN_POINT.matcher(line);
+					pDef.matches();
+					element = pointPourMatcher(pDef, 1);
+					break;
+				case 'S':
+					Matcher sDef = PATTERN_SEGMENT.matcher(line);
+					sDef.matches();
+					element = new Segment(couleurPourMatcher(sDef, 1), pointPourMatcher(sDef, 4),
+							pointPourMatcher(sDef, 9));
+					break;
+				case 'C':
+					Matcher cDef = PATTERN_CERCLE.matcher(line);
+					cDef.matches();
+					element = new Cercle(couleurPourMatcher(cDef, 2), pointPourMatcher(cDef, 5), 
+							Integer.parseInt(cDef.group(1)));
+					break;
+				case 'T':
+					Matcher tDef = PATTERN_TRIANGLE.matcher(line);
+					tDef.matches();
+					element = new Triangle(couleurPourMatcher(tDef, 1), pointPourMatcher(tDef, 4),
+							pointPourMatcher(tDef, 9), pointPourMatcher(tDef, 14));
+					break;
+			}
+			if (element != null)
+				repere.ajouter(element);
 		}
 	}
 	
-	private Couleur couleurPourMatcher(Matcher def, int offset) {
+	private static Couleur couleurPourMatcher(Matcher def, int offset) {
 		return new Couleur(Integer.parseInt(def.group(offset)), Integer.parseInt(def.group(offset + 1)), 
 				Integer.parseInt(def.group(offset + 2)));
 	}
 	
-	private Point pointPourMatcher(Matcher def, int offset) {
+	private static Point pointPourMatcher(Matcher def, int offset) {
 		return new Point(couleurPourMatcher(def, offset + 2), Integer.parseInt(def.group(offset)), 
 				Integer.parseInt(def.group(offset + 1)));
 	}

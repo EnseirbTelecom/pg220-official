@@ -47,7 +47,7 @@ class Repere {
 - String titre
 + void ajouter(ElementRepere e) throws HorsRepereException
 + Repere(String titre, Axe x, Axe y)
-+ Repere(Reader reader) throws HorsRepereException
++ {static} Repere charger() throws HorsRepereException, IOException
 + void dessiner(Writer writer)
 + void sauvegarder(Writer writer)
 }

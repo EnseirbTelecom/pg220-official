@@ -3,6 +3,7 @@ package repere;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 
@@ -33,7 +34,7 @@ public class TestRepere {
 	}
 	
 	@Test
-	public void testSerialisation() throws HorsRepereException {
+	public void testSerialisation() throws HorsRepereException, IOException {
 		String def = "Repere titre\n" +
 				"Axe 10 [255,255,255] titre\n" +
 				"Axe 10 [255,255,255] titre\n" +
@@ -45,7 +46,7 @@ public class TestRepere {
 				"Cercle 2 [0,0,255] Point (2,2) [0,0,255]\n" +
 				"Triangle [0,0,255] Point (1,1) [0,0,255] Point (2,1) [0,0,255] Point (2,2) [0,0,255]\n";
 		
-		Repere r = new Repere(new StringReader(def));
+		Repere r = Repere.charger(new StringReader(def));
 		assertEquals(r.getTitre(), "titre");
 		assertEquals(r.getX().getTitre(), "titre");
 		assertEquals(r.getY().getTitre(), "titre");
