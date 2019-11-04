@@ -56,7 +56,7 @@ La première ligne configure le repère, la seconde l’axe des abscisses, la tr
 * Pour `Cercle` le point fourni correspond au centre
 * Pour `Triangle`, le premier point est point1, le deuxième point est point2 et le troisième est point3.
 
-Implémentez cette fonctionnalité à l'aide du constructeur `Repere(Reader reader)`, de la méthode `void sauvegarder(Writer writer)` et de la méthode abstraite `String serialisation()` de la classe `ElementRepere`.
+Implémentez cette fonctionnalité à l'aide de la méthode statique `Repere charger(Reader reader)`, de la méthode `void sauvegarder(Writer writer)` et de la méthode abstraite `String serialisation()` de la classe `ElementRepere`.
 
 ### Export en SVG (difficile)
 
