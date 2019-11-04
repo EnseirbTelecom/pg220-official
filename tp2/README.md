@@ -13,7 +13,7 @@ La spécification ci-dessous décrit les fonctionnalités du programme à implé
 
 ### Création des éléments du repère (moyen)
 
-Vous devez vérifier que les éléments de repère créés sont conformes. Pour éviter la création d'objets non conformes, vous devez renvoyer un objet d'erreur instance de `IllegalArgumentException` (une erreur qui provient de la librairie standard et qui indique que la valeur d'un paramètre n'est pas correcte).
+Vous devez vérifier que les éléments de repère créés sont conformes. Pour éviter la création d'objets non conformes, vous devez renvoyer un objet d'erreur instance de [`IllegalArgumentException`](https://docs.oracle.com/javase/8/docs/api/index.html?java/lang/IllegalArgumentException.html) (une erreur qui provient de la librairie standard et qui indique que la valeur d'un paramètre n'est pas correcte).
 
 Voici la description des cas de non conformité pour les différents éléments:
 
@@ -31,11 +31,7 @@ L'ajout d'un élément repère qui n'est pas contenu dans le repère doit lever 
 * Un cercle est valide si et seulement si tous les points situés sur le cercle sont valides.
 * Un triangle est valide si et seulement si tous ses points sont valides.
 
-Enfin si un élement repère équivalent est déjà présent dans le repère, il ne doit pas être ajouté (mais sans levée d'exception). Des éléments sont considérés équivalents si ils ont des coordonnées équivalentes (par contre, les couleurs ne sont pas prises en compte). Attention, des éléments qui sont équivalents à une permutation près de leurs coordonnées sont aussi équivalents. Par exemple le segment (0,0) -> (1,1) est équivalent au segment (1,1) -> (0,0). Pour assurer cette contrainte vous devez utiliser une collection de type [`Set`](https://docs.oracle.com/javase/8/docs/api/java/util/Set.html) de la librarie standard de Java. Vous devez ainsi gérer l'équivalence en utilisant les méthodes `boolean equals(Object o)` et `int hashCode()`.
-
-### Gestion des erreurs (moyen)
-
-Les levées d'exception qui surviennent dans le programme doivent être affichées sur la sortie d'erreur standard. Les erreurs de type `ElementInconsistent` ou `AxeInconsistent` doivent occasionner un arrêt du programme. Par contre le programme doit continuer de fonctionner en cas d'erreurs de type `ElementInvalide`.
+Enfin si un élement repère équivalent est déjà présent dans le repère, il ne doit pas être ajouté (mais sans levée d'exception). Des éléments sont considérés équivalents si ils ont des coordonnées équivalentes (par contre, les couleurs ne sont pas prises en compte). Attention, des éléments qui sont équivalents à une permutation près de leurs coordonnées sont aussi équivalents. Par exemple le segment (0,0) -> (1,1) est équivalent au segment (1,1) -> (0,0). Pour assurer cette contrainte vous devez utiliser une collection de type [`Set`](https://docs.oracle.com/javase/8/docs/api/index.html?java/util/HashSet.html) de la librarie standard de Java. Vous devez ainsi gérer l'équivalence en utilisant les méthodes [`public boolean equals(Object o)`](https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html#equals-java.lang.Object-java.lang.Object-) et [`public int hashCode()`](https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html#hashCode-java.lang.Object-).
 
 ### Gestion de la sérialisation (difficile)
 
