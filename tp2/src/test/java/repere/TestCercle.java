@@ -8,22 +8,22 @@ import repere.formes.Cercle;
 import repere.formes.Point;
 
 public class TestCercle {
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testCercleInconsistent1() {
 		new Cercle(Couleur.noir(), new Point(Couleur.noir(), 2, 2), -10);
 	}
 	
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testCercleInconsistent2() {
 		new Cercle(Couleur.noir(), new Point(Couleur.noir(), 2, 2), 0);
 	}
 	
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testCercleInconsistent3() {
 		new Cercle(Couleur.noir(), new Point(Couleur.noir(), 2, 3), 3);
 	}
 	
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testCercleInconsistent4() {
 		new Cercle(Couleur.noir(), new Point(Couleur.noir(), 3, 2), 3);
 	}

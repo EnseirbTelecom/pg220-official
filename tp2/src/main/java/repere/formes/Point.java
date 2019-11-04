@@ -1,7 +1,6 @@
 package repere.formes;
 
 import repere.Couleur;
-import repere.ElementInconsistent;
 import repere.ElementInvalide;
 import repere.ElementRepere;
 import repere.Repere;
@@ -12,10 +11,10 @@ public class Point extends ElementRepere {
 	
 	private int y;
 	
-	public Point(Couleur couleur, int x, int y) throws ElementInconsistent{
+	public Point(Couleur couleur, int x, int y) {
 		super(couleur);
 		if (x < 0 || y < 0)
-			throw new ElementInconsistent();
+			throw new IllegalArgumentException("Les coordonnées d'un point doivent être supérieures à 0.");
 		else {
 			this.x = x;
 			this.y = y;

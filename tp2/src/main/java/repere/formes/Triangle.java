@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import repere.Couleur;
-import repere.ElementInconsistent;
 import repere.ElementInvalide;
 import repere.ElementRepere;
 import repere.Repere;
@@ -15,10 +14,10 @@ public class Triangle extends ElementRepere {
 	private Point p2;
 	private Point p3;
 		
-	public Triangle(Couleur couleur, Point p1,  Point p2,  Point p3) throws ElementInconsistent {
+	public Triangle(Couleur couleur, Point p1,  Point p2,  Point p3) {
 		super(couleur);
 		if ((p1.equals(p2) || p1.equals(p3) || p2.equals(p3)) || aligned(p1, p2, p3))
-			throw new ElementInconsistent();
+			throw new IllegalArgumentException("Les trois points d'un triangle doivent être distincts et non alignés.");
 		else {
 			this.p1 = p1;
 			this.p2 = p2;

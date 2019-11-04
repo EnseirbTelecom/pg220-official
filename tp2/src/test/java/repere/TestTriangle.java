@@ -8,31 +8,31 @@ import repere.formes.Point;
 import repere.formes.Triangle;
 
 public class TestTriangle {
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testTriangleInconsistent1() {
 		new Triangle(Couleur.noir(), new Point(Couleur.noir(), 1 , 1), 
 				new Point(Couleur.noir(), 1, 1), new Point(Couleur.noir(), 2, 2));
 	}
 	
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testTriangleInconsistent2() {
 		new Triangle(Couleur.noir(), new Point(Couleur.noir(), 1 , 1), 
 				new Point(Couleur.noir(), 2, 2), new Point(Couleur.noir(), 2, 2));
 	}
 	
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testTriangleInconsistent3() {
 		new Triangle(Couleur.noir(), new Point(Couleur.noir(), 1 , 1), 
 				new Point(Couleur.noir(), 2, 2), new Point(Couleur.noir(), 1, 1));
 	}
 	
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testTriangleInconsistent4() {
 		new Triangle(Couleur.noir(), new Point(Couleur.noir(), 1 , 1), 
 				new Point(Couleur.noir(), 2, 2), new Point(Couleur.noir(), 3, 3));
 	}
 	
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testTriangleInconsistent5() {
 		new Triangle(Couleur.noir(), new Point(Couleur.noir(), 2 , 2), 
 				new Point(Couleur.noir(), 4, 4), new Point(Couleur.noir(), 1, 1));

@@ -1,7 +1,6 @@
 package repere.formes;
 
 import repere.Couleur;
-import repere.ElementInconsistent;
 import repere.ElementInvalide;
 import repere.ElementRepere;
 import repere.Repere;
@@ -11,10 +10,10 @@ public class Cercle extends ElementRepere {
 	private Point centre;
 	private int rayon;
 		
-	public Cercle(Couleur couleur, Point centre, int rayon) throws ElementInconsistent {
+	public Cercle(Couleur couleur, Point centre, int rayon) {
 		super(couleur);
 		if (rayon <= 0)
-			throw new ElementInconsistent();
+			throw new IllegalArgumentException("Le rayon d'un cercle doit être supérieur à 0.");
 		else {
 			new Point(couleur, centre.getX() - rayon, centre.getY() - rayon);
 			this.centre = centre;

@@ -7,7 +7,7 @@ import repere.formes.Point;
 import repere.formes.Segment;
 
 public class TestSegment {
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testSegmentInconsistent() {
 		new Segment(Couleur.noir(), new Point(Couleur.noir(), 2, 2), new Point(Couleur.noir(), 2, 2));
 	}

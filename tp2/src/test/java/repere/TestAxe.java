@@ -4,12 +4,12 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TestAxe {
-	@Test(expected=AxeInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testAxeInconsistent1() {
 		new Axe(Couleur.noir(), "", 0);
 	}
 	
-	@Test(expected=AxeInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testAxeInconsistent2() {
 		new Axe(Couleur.noir(), "", -1);
 	}

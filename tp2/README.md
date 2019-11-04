@@ -13,14 +13,14 @@ La spécification ci-dessous décrit les fonctionnalités du programme à implé
 
 ### Création des éléments du repère (moyen)
 
-Vous devez vérifier que les éléments de repère créés sont consistants. Voici la description des cas d'inconsistances pour les différents éléments:
+Vous devez vérifier que les éléments de repère créés sont conformes. Pour éviter la création d'objets non conformes, vous devez renvoyer un objet d'erreur instance de `IllegalArgumentException` (une erreur qui provient de la librairie standard et qui indique que la valeur d'un paramètre n'est pas correcte).
 
-* Un point est inconsistant si et seulement si au moins une de ses deux coordonées sont négatives.
-* Un segment est inconsistant si et seulement si ses points de départ et d'arrivée sont équivalents.
-* Un cercle est inconsistant si et seulement si son rayon est négatif, nul, ou qu'un des points situés sur le cercle est inconsistant.
-* Un triangle est inconsistant si il existe un couple de point équivalents dans ses points de définition. En outre, il ne faut pas que les trois points soient alignés.
+Voici la description des cas de non conformité pour les différents éléments:
 
-La création d'un élément inconsistant doit lever une exception de type `ElementInconsistent`.
+* Un point est non conforme si et seulement si au moins une de ses deux coordonées sont négatives.
+* Un segment est non conforme si et seulement si ses points de départ et d'arrivée sont équivalents.
+* Un cercle est non conforme si et seulement si son rayon est négatif, nul, ou qu'un des points situés sur le cercle est non conforme.
+* Un triangle est non conforme si il existe un couple de point équivalents dans ses points de définition. En outre, il ne faut pas que les trois points soient alignés.
 
 ### Gestion du repère (moyen)
 

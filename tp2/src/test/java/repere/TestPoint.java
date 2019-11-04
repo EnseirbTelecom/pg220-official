@@ -6,12 +6,12 @@ import static org.junit.Assert.*;
 import repere.formes.Point;
 
 public class TestPoint {
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testPointInconsistent1() {
 		new Point(Couleur.noir(), -2, 0);
 	}
 	
-	@Test(expected=ElementInconsistent.class)
+	@Test(expected=IllegalArgumentException.class)
 	public void testPointInconsistent2() {
 		new Point(Couleur.noir(), 0, -1);
 	}

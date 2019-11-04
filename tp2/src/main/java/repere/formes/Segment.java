@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import repere.Couleur;
-import repere.ElementInconsistent;
 import repere.ElementInvalide;
 import repere.ElementRepere;
 import repere.Repere;
@@ -15,10 +14,10 @@ public class Segment extends ElementRepere {
 
 	private Point destination;
 
-	public Segment(Couleur couleur, Point origine, Point destination) throws ElementInconsistent {
+	public Segment(Couleur couleur, Point origine, Point destination) {
 		super(couleur);
 		if (origine.equals(destination))
-			throw new ElementInconsistent();
+			throw new IllegalArgumentException("Les deux points d'un segment doivent être distincts.");
 		else {
 			this.origine = origine;
 			this.destination = destination;

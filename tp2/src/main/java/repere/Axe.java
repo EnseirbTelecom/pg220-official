@@ -4,11 +4,11 @@ public class Axe extends ElementAvecCouleur {
 	private String titre;
 	private int taille;
 
-	public Axe(Couleur couleur, String titre, int taille) throws AxeInconsistent {
+	public Axe(Couleur couleur, String titre, int taille) {
 		super(couleur);
 		this.titre = titre;
 		if (taille < 1)
-			throw new AxeInconsistent();
+			throw new IllegalArgumentException("Une taille d'axe doit être supérieure à 0.");
 		else
 			this.taille = taille;
 	}
