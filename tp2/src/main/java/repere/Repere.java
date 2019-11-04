@@ -127,33 +127,24 @@ public class Repere {
 		return elements;
 	}
 
-	public void sauvegarder(Writer w) {
-		try {
-			w.append(String.format("Repere %s\n", titre));
-			w.append(String.format("%s\n", x.serialisation()));
-			w.append(String.format("%s\n", y.serialisation()));
-			for (ElementRepere e: elements)
-				w.append(String.format("%s\n", e.serialisation()));
-			w.close();
-		}
-		catch(IOException e) {
-			e.printStackTrace();
-		}
+	public void sauvegarder(Writer w) throws IOException {
+		w.append(String.format("Repere %s\n", titre));
+		w.append(String.format("%s\n", x.serialisation()));
+		w.append(String.format("%s\n", y.serialisation()));
+		for (ElementRepere e: elements)
+			w.append(String.format("%s\n", e.serialisation()));
+		w.close();
 	}
 	
-	public void dessiner(Writer w) {
-		try {
-			w.append("<?xml version='1.0' encoding='utf-8'?>\n");
-			w.append(String.format("<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='%d' height='%d'>\n", x.getTaille() * 10, y.getTaille() * 10));
-			w.append(String.format("<line x1='0' y1='0' x2='%d' y2='0' style='stroke:%s;stroke-width:3' />\n", x.getTaille() * 10, x.getCouleur().svg()));
-			w.append(String.format("<line x1='0' y1='0' y2='%d' x2='0' style='stroke:%s;stroke-width:3' />\n", y.getTaille() * 10, y.getCouleur().svg()));
-			for( ElementRepere e: elements )
-				w.append(String.format("%s\n", e.svg()));
-			w.append("</svg>");
-			w.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public void dessiner(Writer w) throws IOException {
+		w.append("<?xml version='1.0' encoding='utf-8'?>\n");
+		w.append(String.format("<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='%d' height='%d'>\n", x.getTaille() * 10, y.getTaille() * 10));
+		w.append(String.format("<line x1='0' y1='0' x2='%d' y2='0' style='stroke:%s;stroke-width:3' />\n", x.getTaille() * 10, x.getCouleur().svg()));
+		w.append(String.format("<line x1='0' y1='0' y2='%d' x2='0' style='stroke:%s;stroke-width:3' />\n", y.getTaille() * 10, y.getCouleur().svg()));
+		for( ElementRepere e: elements )
+			w.append(String.format("%s\n", e.svg()));
+		w.append("</svg>");
+		w.close();
 	}
 
 }

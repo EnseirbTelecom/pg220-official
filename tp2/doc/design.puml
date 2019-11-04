@@ -48,8 +48,8 @@ class Repere {
 + void ajouter(ElementRepere e) throws HorsRepereException
 + Repere(String titre, Axe x, Axe y)
 + {static} Repere charger(Reader r) throws HorsRepereException, IOException
-+ void dessiner(Writer writer)
-+ void sauvegarder(Writer writer)
++ void dessiner(Writer writer) throws IOException
++ void sauvegarder(Writer writer) throws IOException
 }
 
 Repere "*" *-- "1" Axe : x
