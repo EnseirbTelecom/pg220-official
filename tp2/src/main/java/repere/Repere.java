@@ -123,7 +123,7 @@ public class Repere {
 			throw new HorsRepereException();
 	}
 	
-	Set<ElementRepere> getElements() {
+	public Set<ElementRepere> getElements() {
 		return elements;
 	}
 
