@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import repere.Couleur;
-import repere.ElementInvalide;
 import repere.ElementRepere;
 import repere.Repere;
 
@@ -57,7 +56,7 @@ public class Triangle extends ElementRepere {
 	}
 
 	@Override
-	public boolean validePour(Repere r) throws ElementInvalide {
+	public boolean validePour(Repere r) {
 		return p1.validePour(r) && p2.validePour(r) && p3.validePour(r);
 	}
 

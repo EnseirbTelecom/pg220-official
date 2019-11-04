@@ -1,6 +1,7 @@
 package repere;
 
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -62,7 +63,7 @@ public class TestTriangle {
 	}
 	
 	@Test
-	public void testSerialisation() throws ElementInvalide {
+	public void testSerialisation() {
 		Triangle t = new Triangle(Couleur.bleu(), new Point(Couleur.noir(), 1, 0), new Point(Couleur.noir(), 1, 1), new Point(Couleur.noir(), 2, 3));
 		String expected = "Triangle [0,0,255] Point (1,0) [0,0,0] Point (1,1) [0,0,0] Point (2,3) [0,0,0]";
 		assertEquals(expected, t.serialisation());

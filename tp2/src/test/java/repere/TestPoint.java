@@ -16,18 +16,18 @@ public class TestPoint {
 		new Point(Couleur.noir(), 0, -1);
 	}
 	
-	@Test(expected=ElementInvalide.class)
-	public void testPointInvalide1() throws ElementInvalide {
+	@Test
+	public void testPointInvalide1() {
 		Repere r = new Repere("", new Axe(Couleur.noir(), "", 5), new Axe(Couleur.noir(), "", 5));
 		Point p = new Point(Couleur.noir(), 6, 2);
-		p.validePour(r);
+		assertFalse(p.validePour(r));
 	}
 	
-	@Test(expected=ElementInvalide.class)
-	public void testPointInvalide2() throws ElementInvalide {
+	@Test
+	public void testPointInvalide2() {
 		Repere r = new Repere("", new Axe(Couleur.noir(), "", 5), new Axe(Couleur.noir(), "", 5));
 		Point p = new Point(Couleur.noir(), 3, 6);
-		p.validePour(r);
+		assertFalse(p.validePour(r));
 	}
 	
 	@Test

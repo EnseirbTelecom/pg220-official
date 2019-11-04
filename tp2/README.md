@@ -24,14 +24,14 @@ Voici la description des cas de non conformité pour les différents éléments:
 
 ### Gestion du repère (moyen)
 
-L'ajout d'un élément repère invalide doit lever une exception de type `ElementInvalide`. Pour cela, vous devez vous aider de la méthode abstraite `boolean validePour(Repere r)` définie dans `ElementRepere`. Voici la description des cas d'invalidité pour les différents éléments :
+L'ajout d'un élément repère qui n'est pas contenu dans le repère doit lever une exception de type `HorsRepereException`. Pour cela, vous devez vous aider de la méthode abstraite `boolean validePour(Repere r)` définie dans `ElementRepere`. Voici la description des cas d'invalidité pour les différents éléments :
 
 * Un point est valide si et seulement si ses coordonnées sont inférieures ou égales aux tailles des axes du repère.
 * Un segment est valide si et seulement si ses points de départ et d'arrivée sont valides.
 * Un cercle est valide si et seulement si tous les points situés sur le cercle sont valides.
 * Un triangle est valide si et seulement si tous ses points sont valides.
 
-Enfin si un élement repère équivalent est déjà présent dans le repère, il ne doit pas être ajouté (mais sans levée d'exception). Des éléments sont considérés équivalents si ils ont des coordonnées équivalentes (par contre, les couleurs ne sont pas prises en compte). Attention, des éléments qui sont équivalents à une permutation près de leurs coordonnées sont aussi équivalents. Par exemple le segment (0,0) -> (1,1) est équivalent au segment (1,1) -> (0,0). Pour assurer cette contrainte vous devez utiliser une collection de type `HashSet`. Vous devez ainsi gérer l'équivalence en utilisant les méthodes `boolean equals(Object o)` et `int hashCode()`.
+Enfin si un élement repère équivalent est déjà présent dans le repère, il ne doit pas être ajouté (mais sans levée d'exception). Des éléments sont considérés équivalents si ils ont des coordonnées équivalentes (par contre, les couleurs ne sont pas prises en compte). Attention, des éléments qui sont équivalents à une permutation près de leurs coordonnées sont aussi équivalents. Par exemple le segment (0,0) -> (1,1) est équivalent au segment (1,1) -> (0,0). Pour assurer cette contrainte vous devez utiliser une collection de type [`Set`](https://docs.oracle.com/javase/8/docs/api/java/util/Set.html) de la librarie standard de Java. Vous devez ainsi gérer l'équivalence en utilisant les méthodes `boolean equals(Object o)` et `int hashCode()`.
 
 ### Gestion des erreurs (moyen)
 

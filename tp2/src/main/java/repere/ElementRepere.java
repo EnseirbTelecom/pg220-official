@@ -6,7 +6,7 @@ public abstract class ElementRepere extends ElementAvecCouleur {
 		super(couleur);
 	}
 	
-	public abstract boolean validePour(Repere r) throws ElementInvalide;
+	public abstract boolean validePour(Repere r);
 	
 	public abstract String svg();
 	

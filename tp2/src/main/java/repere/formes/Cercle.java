@@ -1,7 +1,7 @@
 package repere.formes;
 
 import repere.Couleur;
-import repere.ElementInvalide;
+import repere.HorsRepereException;
 import repere.ElementRepere;
 import repere.Repere;
 
@@ -37,7 +37,7 @@ public class Cercle extends ElementRepere {
 	}
 
 	@Override
-	public boolean validePour(Repere r) throws ElementInvalide {
+	public boolean validePour(Repere r) {
 		Point p = new Point(couleur, centre.getX() + rayon, centre.getY() + rayon);
 		return p.validePour(r);
 	}

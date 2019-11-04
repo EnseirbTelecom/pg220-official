@@ -14,21 +14,26 @@ import repere.formes.*;
 
 public class TestRepere {
 	@Test
-	public void testAjouter() {
+	public void testAjouter() throws HorsRepereException {
 		Repere r = new Repere("", new Axe(Couleur.noir(), "", 20), new Axe(Couleur.noir(), "", 20));
 		Point p1 = new Point(Couleur.noir(), 5, 5);
 		Point p2 = new Point(Couleur.noir(), 7, 5);
 		Point p3 = new Point(Couleur.noir(), 7, 5);
-		Point p4 = new Point(Couleur.noir(), 21, 20);
 		r.ajouter(p1);
 		r.ajouter(p2);
 		r.ajouter(p3);
-		r.ajouter(p4);
 		assertEquals(2, r.getElements().size());
+	}
+
+	@Test(expected=HorsRepereException.class)
+	public void testAjouterHorsRepere() throws HorsRepereException {
+		Repere r = new Repere("", new Axe(Couleur.noir(), "", 20), new Axe(Couleur.noir(), "", 20));
+		Point p1 = new Point(Couleur.noir(), 21, 20);
+		r.ajouter(p1);
 	}
 	
 	@Test
-	public void testSerialisation() {
+	public void testSerialisation() throws HorsRepereException {
 		String def = "Repere titre\n" +
 				"Axe 10 [255,255,255] titre\n" +
 				"Axe 10 [255,255,255] titre\n" +
@@ -65,7 +70,7 @@ public class TestRepere {
 	}
 	
 	@Test
-	public void testDessiner() {
+	public void testDessiner() throws HorsRepereException {
 		String def = "<?xml version='1.0' encoding='utf-8'?>\n" +
 				"<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='200' height='200'>\n" +
 				"<line x1='0' y1='0' x2='200' y2='0' style='stroke:rgb(0,0,0);stroke-width:3' />\n" +

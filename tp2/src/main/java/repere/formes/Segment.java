@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import repere.Couleur;
-import repere.ElementInvalide;
 import repere.ElementRepere;
 import repere.Repere;
 
@@ -53,7 +52,7 @@ public class Segment extends ElementRepere {
 	}
 
 	@Override
-	public boolean validePour(Repere r) throws ElementInvalide {
+	public boolean validePour(Repere r) {
 		return origine.validePour(r) && destination.validePour(r);
 	}
 

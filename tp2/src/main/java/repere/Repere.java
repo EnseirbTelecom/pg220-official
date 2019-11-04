@@ -31,7 +31,7 @@ public class Repere {
 		this.elements = new HashSet<ElementRepere>();
 	}
 
-	public Repere(Reader reader) {
+	public Repere(Reader reader) throws HorsRepereException {
 		try {
 			String couleurDef = "\\[(\\d+),(\\d+),(\\d+)\\]";
 			
@@ -112,13 +112,11 @@ public class Repere {
 		return this.titre;
 	}
 
-	public void ajouter(ElementRepere e) {
-		try {
-			if (e.validePour(this))
-				elements.add(e);
-		} catch (ElementInvalide err) {
-			System.err.println(err);
-		}
+	public void ajouter(ElementRepere e) throws HorsRepereException {
+		if (e.validePour(this))
+			elements.add(e);
+		else
+			throw new HorsRepereException();
 	}
 	
 	Set<ElementRepere> getElements() {

@@ -1,7 +1,7 @@
 @startuml design.png
 package java.lang {
 
-class RuntimeException {
+class Exception {
 }
 
 }
@@ -9,7 +9,7 @@ class RuntimeException {
 package repere {
 
 abstract class ElementRepere {
-+ {abstract} boolean validePour(Repere r) throws ElementInvalide
++ {abstract} boolean validePour(Repere r)
 + {abstract} String svg()
 + {abstract} String serialisation()
 }
@@ -34,7 +34,7 @@ class Couleur {
 + String svg()
 }
 
-RuntimeException <|-- ElementInvalide
+Exception <|-- HorsRepereException
 
 class Axe {
 - String titre
@@ -45,9 +45,9 @@ class Axe {
 
 class Repere {
 - String titre
-+ void ajouter(ElementRepere e)
++ void ajouter(ElementRepere e) throws HorsRepereException
 + Repere(String titre, Axe x, Axe y)
-+ Repere(Reader reader)
++ Repere(Reader reader) throws HorsRepereException
 + void dessiner(Writer writer)
 + void sauvegarder(Writer writer)
 }
@@ -67,7 +67,7 @@ class Segment {
 + Segment(Couleur c, Point start, Point end)
 + boolean equals(Object o)
 + int hashCode()
-+ boolean validePour(Repere r) throws ElementInvalide
++ boolean validePour(Repere r)
 + String svg()
 + String serialisation()
 }
@@ -79,7 +79,7 @@ class Point {
 + Point(Couleur c, int x, int y)
 + boolean equals(Object o)
 + int hashCode()
-+ boolean validePour(Repere r) throws ElementInvalide
++ boolean validePour(Repere r)
 + String svg()
 + String serialisation()
 }
@@ -91,7 +91,7 @@ class Cercle {
 + Cercle(Couleur c, Point centre, int rayon)
 + boolean equals(Object o)
 + int hashCode()
-+ boolean validePour(Repere r) throws ElementInvalide
++ boolean validePour(Repere r)
 + String svg()
 + String serialisation()
 }
@@ -104,7 +104,7 @@ class Triangle {
 + Triangle(Couleur c, Point point1, Point point2, Point point3)
 + boolean equals(Object o)
 + int hashCode()
-+ boolean validePour(Repere r) throws ElementInvalide
++ boolean validePour(Repere r)
 + String svg()
 + String serialisation()
 }

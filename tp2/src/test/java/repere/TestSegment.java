@@ -12,22 +12,22 @@ public class TestSegment {
 		new Segment(Couleur.noir(), new Point(Couleur.noir(), 2, 2), new Point(Couleur.noir(), 2, 2));
 	}
 	
-	@Test(expected=ElementInvalide.class)
-	public void testSegmentInvalide1() throws ElementInvalide {
+	@Test
+	public void testSegmentInvalide1() {
 		Repere r = new Repere("", new Axe(Couleur.noir(), "", 5), new Axe(Couleur.noir(), "", 5));
 		Point p1 = new Point(Couleur.noir(), 6, 2);
 		Point p2 = new Point(Couleur.noir(), 2, 2);
 		Segment s = new Segment(Couleur.noir(), p1, p2);
-		s.validePour(r);
+		assertFalse(s.validePour(r));
 	}
 	
-	@Test(expected=ElementInvalide.class)
-	public void testSegmentInvalide2() throws ElementInvalide {
+	@Test
+	public void testSegmentInvalide2() {
 		Repere r = new Repere("", new Axe(Couleur.noir(), "", 5), new Axe(Couleur.noir(), "", 5));
 		Point p1 = new Point(Couleur.noir(), 3, 2);
 		Point p2 = new Point(Couleur.noir(), 2, 8);
 		Segment s = new Segment(Couleur.noir(), p1, p2);
-		s.validePour(r);
+		assertFalse(s.validePour(r));
 	}
 	
 	@Test

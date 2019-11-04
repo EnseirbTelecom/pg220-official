@@ -2,6 +2,7 @@ package repere;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 
 import repere.formes.Cercle;
@@ -28,24 +29,24 @@ public class TestCercle {
 		new Cercle(Couleur.noir(), new Point(Couleur.noir(), 3, 2), 3);
 	}
 	
-	@Test(expected=ElementInvalide.class)
-	public void testCercleInvalide1() throws ElementInvalide {
+	@Test
+	public void testCercleInvalide1() {
 		Repere r = new Repere("", new Axe(Couleur.noir(), "", 5), new Axe(Couleur.noir(), "", 5));
 		Point centre = new Point(Couleur.noir(), 6, 2);
 		Cercle c = new Cercle(Couleur.noir(), centre, 1);
-		c.validePour(r);
-	}
-	
-	@Test(expected=ElementInvalide.class)
-	public void testCercleInvalide2() throws ElementInvalide {
-		Repere r = new Repere("", new Axe(Couleur.noir(), "", 10), new Axe(Couleur.noir(), "", 10));
-		Point centre = new Point(Couleur.noir(), 6, 6);
-		Cercle c = new Cercle(Couleur.noir(), centre, 5);
-		c.validePour(r);
+		assertFalse(c.validePour(r));
 	}
 	
 	@Test
-	public void testCercleEquals() throws ElementInvalide {
+	public void testCercleInvalide2() {
+		Repere r = new Repere("", new Axe(Couleur.noir(), "", 10), new Axe(Couleur.noir(), "", 10));
+		Point centre = new Point(Couleur.noir(), 6, 6);
+		Cercle c = new Cercle(Couleur.noir(), centre, 5);
+		assertFalse(c.validePour(r));
+	}
+	
+	@Test
+	public void testCercleEquals() {
 		Cercle c1 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 1);
 		Cercle c2 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 1);
 		assertEquals(c1, c2);
@@ -56,7 +57,7 @@ public class TestCercle {
 	}
 	
 	@Test
-	public void testSerialisation() throws ElementInvalide {
+	public void testSerialisation() {
 		Cercle c = new Cercle(Couleur.bleu(), new Point(Couleur.noir(), 5, 5), 2);
 		String expected = "Cercle 2 [0,0,255] Point (5,5) [0,0,0]";
 		assertEquals(expected, c.serialisation());

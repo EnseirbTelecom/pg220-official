@@ -1,7 +1,6 @@
 package repere.formes;
 
 import repere.Couleur;
-import repere.ElementInvalide;
 import repere.ElementRepere;
 import repere.Repere;
 
@@ -45,11 +44,8 @@ public class Point extends ElementRepere {
 	}
 
 	@Override
-	public boolean validePour(Repere r) throws ElementInvalide {
-		if (x <= r.getX().getTaille() && y <= r.getY().getTaille())
-			return true;
-		else
-			throw new ElementInvalide();
+	public boolean validePour(Repere r) {
+		return x <= r.getX().getTaille() && y <= r.getY().getTaille();
 	}
 
 	@Override
