@@ -23,7 +23,7 @@ Voici les fonctionnalités à développer.
 
 Les composantes `r`, `g` et `b` d’une couleur doivent être comprises entre 0 et 255. Si une composante n'est pas comprise entre 0 et 255 alors il faut quelle soit ramenée dans cet intervalle (0 pour une valeur inférieure à 0 et 255 pour une valeur supérieure à 255).
 
-En outre la classe couleur doit fournir plusieurs méthodes statiques qui créent des couleurs prédéfinies. Définissez aussi une méthode `Couleur auHasard()` qui renvoie un couleur au hasard avec des valeurs `r`,`g` et `b` aléatoirement générées (astuce : regardez du coté de la classe `Random`).
+En outre la classe couleur doit fournir plusieurs méthodes statiques qui créent des couleurs prédéfinies. Définissez aussi une méthode statique `Couleur auHasard()` qui renvoie un couleur au hasard avec des valeurs `r`,`g` et `b` aléatoirement générées (astuce : regardez du coté de la classe `Random`).
 
 ### Gestion des axes (facile)
 
