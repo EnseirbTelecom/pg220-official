@@ -38,7 +38,7 @@ class Couleur {
   Couleur(int r, int g, int b)
   String description()
 }
-ElementRepere "*" *-- "1" Couleur : couleur
+ElementRepere "1" *-- "1" Couleur : couleur
 class ElementRepere {
   String description()
   ElementRepere(String titre, Couleur couleur)
