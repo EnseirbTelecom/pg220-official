@@ -1,4 +1,4 @@
-@startuml tp1_uml.png
+@startuml design.png
 class ElementAvecNom {
   String titre
   String description()
