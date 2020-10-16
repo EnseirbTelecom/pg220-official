@@ -1,11 +1,11 @@
-class Droite extends ElementRepere {
+class Segment extends ElementRepere {
 	Point origine;
 	Point destination;
 	
-	Droite() {
-		this("Droite", Couleur.noir(), new Point(), new Point());
+	Segment() {
+		this("Segment", Couleur.noir(), new Point(), new Point());
 	}
-	Droite(String titre, Couleur couleur, Point origine, Point destination) {
+	Segment(String titre, Couleur couleur, Point origine, Point destination) {
 		super(titre, couleur);
 		setOrigine(origine);
 		setDestination(destination);
@@ -26,7 +26,7 @@ class Droite extends ElementRepere {
 	}
 
 	String description() {
-		return "Droite (" + this.getOrigine().getX() + "," + this.getOrigine().getY() + ") -> (" +
+		return "Segment (" + this.getOrigine().getX() + "," + this.getOrigine().getY() + ") -> (" +
 				this.getDestination().getX() + "," + this.getDestination().getY() + "), " + this.getCouleur().description() + ", titre : " + this.getTitre();
 	}
 	

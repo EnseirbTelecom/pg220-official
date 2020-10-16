@@ -12,7 +12,7 @@ plantUml {
 }
 
 application {
-    mainClassName = 'Tests'
+    mainClass = 'Tests'
 }
 
 build.dependsOn ':plantUml'

@@ -41,9 +41,9 @@ class Tests {
 		verifie("description point", p2.description().equals("Point (0,5), couleur : (255,255,255), titre : p2"));
 
 		// Tests relatifs à la classe Droite
-		Droite d1 = new Droite("d1", Couleur.blanc(), p1, p2);
-		verifie("longueur droite", d1.getLongueur() == 5D);
-		verifie("description droite", d1.description().equals("Droite (0,0) -> (0,5), couleur : (255,255,255), titre : d1"));
+		Segment d1 = new Segment("d1", Couleur.blanc(), p1, p2);
+		verifie("longueur segment", d1.getLongueur() == 5D);
+		verifie("description segment", d1.description().equals("Segment (0,0) -> (0,5), couleur : (255,255,255), titre : d1"));
 
 		// Tests relatifs à la classe EnsembleElementRepere
 		EnsembleElementRepere e = new EnsembleElementRepere();
@@ -52,8 +52,8 @@ class Tests {
 		verifie("taille après ajout du point", e.getTailleCourante() == 1);
 		verifie("récupération du point", e.recuperer(0) == p1);
 		e.ajouterElement(d1);
-		verifie("taille après ajout de la droite", e.getTailleCourante() == 2);
-		verifie("récupération de la droite", e.recuperer(1) == d1);
+		verifie("taille après ajout du segment", e.getTailleCourante() == 2);
+		verifie("récupération du segment", e.recuperer(1) == d1);
 		for (int i = 0; i < 1000; i++)
 			e.ajouterElement(new Point());
 		verifie("taille après ajout de 1000 points", e.getTailleCourante() == 1002);

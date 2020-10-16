@@ -1,6 +1,6 @@
 # TP 1
 
-Au cours de ce TP, nous allons implémenter les classes `Axe`, `Droite`, `Point`, `EnsembleElementsRepere` et `Couleur`. Avant de détailler le travail à effectuer voici quelques rappels. Tout d’abord, lisez la documentation des classes Java lorsque cela est nécessaire. Pour rappel, recherchez `javadoc NomClasse` sur Google.
+Au cours de ce TP, nous allons implémenter les classes `Axe`, `Segment`, `Point`, `EnsembleElementsRepere` et `Couleur`. Avant de détailler le travail à effectuer voici quelques rappels. Tout d’abord, lisez la documentation des classes Java lorsque cela est nécessaire. Pour rappel, recherchez `javadoc NomClasse` sur Google.
 
 En Java, on place une classe par fichier. Pour l'instant elles doivent se trouver dans le même repertoire, ce qui rend les `import` inutiles. Si la classe est définie comme `class Foo` elle doit se trouver dans le fichier `Foo.java`. N'oubliez pas que les noms de classes (et donc des constructeurs) commencent par une majuscules, tous les autres identifiants commencent par une minuscule.
 Pour compiler un fichier `Foo.java`, utilisez la commande `javac Foo.java` puis lancez le programme avec `java Foo`. La classe que vous exécutez doit contenir une méthode `public static void main(String[] args)` qui est le point d’entrée du programme. Pour compiler plusieurs fichiers ensembles, lancez `javac *.java` ou `javac fichier1.java fichier2.java`.
@@ -42,11 +42,11 @@ Chaque classe doit avoir deux constructeurs : un constructeur sans paramètre qu
 Définir ou redéfinir pour chaque classe les méthodes `String description()` pour obtenir les affichages suivants (bien entendu il faut utiliser les valeurs réelles et pas x, y, etc...):
 
 * `Point` affiche `Point (x,y), couleur : (r,g,b), titre: titre`
-* `Droite` affiche `Droite (x1,y2) -> (x2,y2), couleur : (r,g,b), titre: titre`
+* `Segment` affiche `Segment (x1,y2) -> (x2,y2), couleur : (r,g,b), titre: titre`
 * `Axe` affiche `Axe taille : taille, titre : titre`
 
 Les méthodes `String description()` doivent utiliser le mécanisme de redéfinition pour éviter au maximum les duplications de code (invocation des méthodes `description()` des super-classes). Exécutez à nouveau le fichier de test et vérifiez que vous obtenez l’affichage escompté.
 
-### Stockage des points et droites (difficile)
+### Stockage des points et segments (difficile)
 
-La classe `EnsembleElementRepere` doit stocker des éléments de type `Droite` et `Point`. Il est à noter que cet élément de stockage est de taille dynamique, on doit toujours pouvoir rajouter de nouveau éléments. Cette classe doit être programmée en utilisant en interne un tableau de taille fixe (rappel : création d’un tableau de taille 10, on écrit `int[] t = new int[10]`). Définissez tout d’abord la méthode `ajouter(ElementRepere e)` qui permet d’ajouter un élément dans l’ensemble. Ensuite, écrivez la méthode `ElementRepere recuperer(int i)` qui permet de récupérer le i-ème élément de l'ensemble.
+La classe `EnsembleElementRepere` doit stocker des éléments de type `Segment` et `Point`. Il est à noter que cet élément de stockage est de taille dynamique, on doit toujours pouvoir rajouter de nouveau éléments. Cette classe doit être programmée en utilisant en interne un tableau de taille fixe (rappel : création d’un tableau de taille 10, on écrit `int[] t = new int[10]`). Définissez tout d’abord la méthode `ajouter(ElementRepere e)` qui permet d’ajouter un élément dans l’ensemble. Ensuite, écrivez la méthode `ElementRepere recuperer(int i)` qui permet de récupérer le i-ème élément de l'ensemble.

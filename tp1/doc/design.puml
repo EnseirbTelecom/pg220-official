@@ -15,15 +15,15 @@ class Point {
   Point()
   Point(String titre, Couleur c, int x, int y)
 }
-ElementRepere <|-- Droite
-class Droite {
+ElementRepere <|-- Segment
+class Segment {
   double getLongueur()
   String description()
-  Droite()
-  Droite(String titre, Couleur c, Point origine, Point destination)
+  Segment()
+  Segment(String titre, Couleur c, Point origine, Point destination)
 }
-Droite "1" *-- "1" Point : origine
-Droite "1" *-- "1" Point : destination
+Segment "1" *-- "1" Point : origine
+Segment "1" *-- "1" Point : destination
 class Couleur {
   {static} Couleur auHasard()
   {static} Couleur noir()
