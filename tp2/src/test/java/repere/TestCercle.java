@@ -49,18 +49,17 @@ public class TestCercle {
 	public void testCercleEquals() {
 		Cercle c1 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 1);
 		Cercle c2 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 1);
-		assertEquals(c1, c2);
+		assertEquals(c2, c1);
 		Cercle c3 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 4);
-		assertNotEquals(c1, c3);
-		assertNotEquals(c1, null);
-		assertNotEquals(c1, "foo");
+		assertNotEquals(c3, c1);
+		assertNotEquals(null, c1);
+		assertNotEquals("foo", c1);
 	}
 	
 	@Test
 	public void testSerialisation() {
 		Cercle c = new Cercle(Couleur.bleu(), new Point(Couleur.noir(), 5, 5), 2);
-		String expected = "Cercle 2 [0,0,255] Point (5,5) [0,0,0]";
-		assertEquals(expected, c.serialisation());
+		assertEquals("Cercle 2 [0,0,255] Point (5,5) [0,0,0]", c.serialisation());
 	}
 	
 	@Test

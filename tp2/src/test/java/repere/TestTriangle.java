@@ -51,22 +51,22 @@ public class TestTriangle {
 				new Point(Couleur.noir(), 0, 1), new Point(Couleur.noir(), 1, 0));
 		Triangle t4 = new Triangle(Couleur.noir(), new Point(Couleur.noir(), 2, 2), 
 				new Point(Couleur.noir(), 0, 1), new Point(Couleur.noir(), 1, 0));
-		assertEquals(t1, t2);
-		assertEquals(t1, t5);
-		assertEquals(t2, t3);
+		assertEquals(t2, t1);
 		assertEquals(t3, t1);
-		assertNotEquals(t1, t4);
-		assertNotEquals(t2, t4);
-		assertNotEquals(t3, t4);
-		assertNotEquals(t1, null);
-		assertNotEquals(t3, "foo");
+		assertEquals(t5, t1);
+		assertEquals(t3, t2);
+		
+		assertNotEquals(t4, t1);
+		assertNotEquals(t4, t2);
+		assertNotEquals(t4, t3);
+		assertNotEquals(null, t1);
+		assertNotEquals("foo", t3);
 	}
 	
 	@Test
 	public void testSerialisation() {
 		Triangle t = new Triangle(Couleur.bleu(), new Point(Couleur.noir(), 1, 0), new Point(Couleur.noir(), 1, 1), new Point(Couleur.noir(), 2, 3));
-		String expected = "Triangle [0,0,255] Point (1,0) [0,0,0] Point (1,1) [0,0,0] Point (2,3) [0,0,0]";
-		assertEquals(expected, t.serialisation());
+		assertEquals("Triangle [0,0,255] Point (1,0) [0,0,0] Point (1,1) [0,0,0] Point (2,3) [0,0,0]", t.serialisation());
 	}
 	
 	@Test

@@ -47,11 +47,11 @@ public class TestRepere {
 				"Triangle [0,0,255] Point (1,1) [0,0,255] Point (2,1) [0,0,255] Point (2,2) [0,0,255]\n";
 		
 		Repere r = Repere.charger(new StringReader(def));
-		assertEquals(r.getTitre(), "titre");
-		assertEquals(r.getX().getTitre(), "titre");
-		assertEquals(r.getY().getTitre(), "titre");
-		assertEquals(r.getX().getTaille(), 10);
-		assertEquals(r.getY().getTaille(), 10);
+		assertEquals("titre", r.getTitre());
+		assertEquals("titre", r.getX().getTitre());
+		assertEquals("titre", r.getY().getTitre());
+		assertEquals(10, r.getX().getTaille());
+		assertEquals(10, r.getY().getTaille());
 		assertTrue(r.getElements().contains(new Point(Couleur.vert(), 0, 0)));
 		assertTrue(r.getElements().contains(new Point(Couleur.vert(), 3, 6)));
 		assertTrue(r.getElements().contains(new Point(Couleur.vert(), 2, 2)));

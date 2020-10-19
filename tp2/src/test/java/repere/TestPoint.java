@@ -34,11 +34,11 @@ public class TestPoint {
 	public void testPointEquals() {
 		Point p1 = new Point(Couleur.noir(), 1, 6);
 		Point p3 = new Point(Couleur.noir(), 1, 6);
-		assertEquals(p1, p3);
+		assertEquals(p3, p1);
 		Point p2 = new Point(Couleur.noir(), 6, 1);
-		assertNotEquals(p1, p2);
-		assertNotEquals(p1, null);
-		assertNotEquals(p1, "foo");
+		assertNotEquals(p2, p1);
+		assertNotEquals(null, p1);
+		assertNotEquals("foo", p1);
 	}
 	
 	@Test

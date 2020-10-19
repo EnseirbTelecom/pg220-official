@@ -36,14 +36,14 @@ public class TestSegment {
 		Segment s2 = new Segment(Couleur.noir(), new Point(Couleur.noir(), 1, 0), new Point(Couleur.noir(), 0, 1));
 		assertEquals(s1, s2);
 		Segment s3 = new Segment(Couleur.noir(), new Point(Couleur.noir(), 0, 1), new Point(Couleur.noir(), 1, 0));
-		assertEquals(s1, s3);
-		assertEquals(s2, s3);
+		assertEquals(s3, s1);
+		assertEquals(s3, s2);
 		Segment s4 = new Segment(Couleur.noir(), new Point(Couleur.noir(), 0, 1), new Point(Couleur.noir(), 2, 0));
-		assertNotEquals(s1, s4);
-		assertNotEquals(s2, s4);
-		assertNotEquals(s3, s4);
-		assertNotEquals(s1, null);
-		assertNotEquals(s1, "foo");
+		assertNotEquals(s4, s1);
+		assertNotEquals(s4, s2);
+		assertNotEquals(s4, s3);
+		assertNotEquals(null, s1);
+		assertNotEquals("foo", s1);
 	}
 	
 	@Test

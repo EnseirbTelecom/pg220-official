@@ -7,17 +7,17 @@ public class TestCouleur {
 	@Test
 	public void testComposantesTropPetites() {
 		Couleur c1 = new Couleur(-1, -1, -1);
-		assertEquals(c1.getR(), 0);
-		assertEquals(c1.getG(), 0);
-		assertEquals(c1.getB(), 0);
+		assertEquals(0, c1.getR());
+		assertEquals(0, c1.getG());
+		assertEquals(0, c1.getB());
 	}
 
 	@Test
 	public void testComposantesTropGrandes() {
 		Couleur c1 = new Couleur(256, 256, 256);
-		assertEquals(c1.getR(), 255);
-		assertEquals(c1.getG(), 255);
-		assertEquals(c1.getB(), 255);
+		assertEquals(255, c1.getR());
+		assertEquals(255, c1.getG());
+		assertEquals(255, c1.getB());
 	}
 
 	@Test
