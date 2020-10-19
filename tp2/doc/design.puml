@@ -16,7 +16,7 @@ abstract class ElementRepere {
 
 ElementAvecCouleur <|-- Axe
 ElementAvecCouleur <|-- ElementRepere
-ElementAvecCouleur "*" *-- "1" Couleur : couleur
+ElementAvecCouleur "1" *-- "1" Couleur : couleur
 
 class Couleur {
 - int r
@@ -52,8 +52,8 @@ class Repere {
 + void sauvegarder(Writer writer) throws IOException
 }
 
-Repere "*" *-- "1" Axe : x
-Repere "*" *-- "1" Axe : y
+Repere "1" *-- "1" Axe : x
+Repere "1" *-- "1" Axe : y
 Repere "1" *-- "*" ElementRepere : elements
 
 }
@@ -61,8 +61,8 @@ Repere "1" *-- "*" ElementRepere : elements
 package repere.formes {
 
 ElementRepere <|-- Segment
-Segment "*" *-- "1" Point : origine
-Segment "*" *-- "1" Point : destination
+Segment "1" *-- "1" Point : origine
+Segment "1" *-- "1" Point : destination
 class Segment {
 + Segment(Couleur c, Point start, Point end)
 + boolean equals(Object o)
@@ -85,7 +85,7 @@ class Point {
 }
 
 ElementRepere <|-- Cercle
-Cercle "*" *-- "1" Point : centre
+Cercle "1" *-- "1" Point : centre
 class Cercle {
 - int rayon
 + Cercle(Couleur c, Point centre, int rayon)
@@ -97,9 +97,9 @@ class Cercle {
 }
 
 ElementRepere <|-- Triangle
-Triangle "*" *-- "1" Point : point1
-Triangle "*" *-- "1" Point : point2
-Triangle "*" *-- "1" Point : point3
+Triangle "1" *-- "1" Point : point1
+Triangle "1" *-- "1" Point : point2
+Triangle "1" *-- "1" Point : point3
 class Triangle {
 + Triangle(Couleur c, Point point1, Point point2, Point point3)
 + boolean equals(Object o)
