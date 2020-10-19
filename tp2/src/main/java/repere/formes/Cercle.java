@@ -1,7 +1,6 @@
 package repere.formes;
 
 import repere.Couleur;
-import repere.HorsRepereException;
 import repere.ElementRepere;
 import repere.Repere;
 
