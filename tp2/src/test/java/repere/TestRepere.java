@@ -1,8 +1,5 @@
 package repere;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -10,6 +7,9 @@ import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import repere.formes.*;
 
@@ -23,14 +23,16 @@ public class TestRepere {
 		r.ajouter(p1);
 		r.ajouter(p2);
 		r.ajouter(p3);
-		assertEquals(2, r.getElements().size());
+		Assertions.assertEquals(2, r.getElements().size());
 	}
 
-	@Test(expected=HorsRepereException.class)
+	@Test
 	public void testAjouterHorsRepere() throws HorsRepereException {
 		Repere r = new Repere("", new Axe(Couleur.noir(), "", 20), new Axe(Couleur.noir(), "", 20));
 		Point p1 = new Point(Couleur.noir(), 21, 20);
-		r.ajouter(p1);
+		Assertions.assertThrows(HorsRepereException.class, () -> {
+			r.ajouter(p1);
+		});
 	}
 	
 	@Test
@@ -47,27 +49,27 @@ public class TestRepere {
 				"Triangle [0,0,255] Point (1,1) [0,0,255] Point (2,1) [0,0,255] Point (2,2) [0,0,255]\n";
 		
 		Repere r = Repere.charger(new StringReader(def));
-		assertEquals("titre", r.getTitre());
-		assertEquals("titre", r.getX().getTitre());
-		assertEquals("titre", r.getY().getTitre());
-		assertEquals(10, r.getX().getTaille());
-		assertEquals(10, r.getY().getTaille());
-		assertTrue(r.getElements().contains(new Point(Couleur.vert(), 0, 0)));
-		assertTrue(r.getElements().contains(new Point(Couleur.vert(), 3, 6)));
-		assertTrue(r.getElements().contains(new Point(Couleur.vert(), 2, 2)));
-		assertTrue(r.getElements().contains(new Segment(Couleur.vert(), new Point(Couleur.vert(), 3, 3), new Point(Couleur.vert(), 6, 6))));
-		assertTrue(r.getElements().contains(new Segment(Couleur.vert(), new Point(Couleur.vert(), 1, 1), new Point(Couleur.vert(), 5, 5))));
-		assertTrue(r.getElements().contains(new Cercle(Couleur.bleu(), new Point(Couleur.bleu(), 2, 2), 2)));
-		assertTrue(r.getElements().contains(new Triangle(Couleur.bleu(), new Point(Couleur.bleu(), 1, 1), 
+		Assertions.assertEquals("titre", r.getTitre());
+		Assertions.assertEquals("titre", r.getX().getTitre());
+		Assertions.assertEquals("titre", r.getY().getTitre());
+		Assertions.assertEquals(10, r.getX().getTaille());
+		Assertions.assertEquals(10, r.getY().getTaille());
+		Assertions.assertTrue(r.getElements().contains(new Point(Couleur.vert(), 0, 0)));
+		Assertions.assertTrue(r.getElements().contains(new Point(Couleur.vert(), 3, 6)));
+		Assertions.assertTrue(r.getElements().contains(new Point(Couleur.vert(), 2, 2)));
+		Assertions.assertTrue(r.getElements().contains(new Segment(Couleur.vert(), new Point(Couleur.vert(), 3, 3), new Point(Couleur.vert(), 6, 6))));
+		Assertions.assertTrue(r.getElements().contains(new Segment(Couleur.vert(), new Point(Couleur.vert(), 1, 1), new Point(Couleur.vert(), 5, 5))));
+		Assertions.assertTrue(r.getElements().contains(new Cercle(Couleur.bleu(), new Point(Couleur.bleu(), 2, 2), 2)));
+		Assertions.assertTrue(r.getElements().contains(new Triangle(Couleur.bleu(), new Point(Couleur.bleu(), 1, 1), 
 				new Point(Couleur.bleu(), 2, 1), new Point(Couleur.bleu(), 2, 2))));
-		assertEquals(7, r.getElements().size());
+				Assertions.assertEquals(7, r.getElements().size());
 		
 		StringWriter w = new StringWriter();
 		r.sauvegarder(w);
 		
 		Set<String> linesDef = new HashSet<String>(Arrays.asList(def.split("\\n")));
 		Set<String> lines = new HashSet<String>(Arrays.asList(w.toString().split("\\n")));
-		assertEquals(linesDef, lines);
+		Assertions.assertEquals(linesDef, lines);
 	}
 	
 	@Test
@@ -98,6 +100,6 @@ public class TestRepere {
 		
 		Set<String> linesDef = new HashSet<String>(Arrays.asList(def.split("\\n")));
 		Set<String> lines = new HashSet<String>(Arrays.asList(w.toString().split("\\n")));
-		assertEquals(linesDef, lines);
+		Assertions.assertEquals(linesDef, lines);
 	}
 }

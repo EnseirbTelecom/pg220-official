@@ -8,7 +8,7 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
 }
 
 plantUml {
@@ -16,9 +16,12 @@ plantUml {
 }
 
 test {
+    useJUnitPlatform()
+
     testLogging {
+        exceptionFormat = 'full'
         events "passed", "skipped", "failed"
     }
-}
+    }
 
 build.dependsOn ':plantUml'
