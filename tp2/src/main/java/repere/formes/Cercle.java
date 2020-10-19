@@ -13,11 +13,11 @@ public class Cercle extends ElementRepere {
 		super(couleur);
 		if (rayon <= 0)
 			throw new IllegalArgumentException("Le rayon d'un cercle doit être supérieur à 0.");
-		else {
-			new Point(couleur, centre.getX() - rayon, centre.getY() - rayon);
-			this.centre = centre;
-			this.rayon = rayon;
-		}
+		if (centre.getX() - rayon < 0 || centre.getY() - rayon < 0)
+			throw new IllegalArgumentException("Aucune coordonnée du cercle ne doit sortir du repère.");
+
+		this.centre = centre;
+		this.rayon = rayon;
 	}
 	
 	@Override
@@ -29,10 +29,9 @@ public class Cercle extends ElementRepere {
 	public boolean equals(Object o) {
 		if ( !(o instanceof Cercle) )
 			return false;
-		else {
-			Cercle c = (Cercle) o;
-			return c.rayon == this.rayon && c.centre.equals(this.centre);
-		}
+
+		Cercle c = (Cercle) o;
+		return c.rayon == this.rayon && c.centre.equals(this.centre);
 	}
 
 	@Override

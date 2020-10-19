@@ -17,10 +17,9 @@ public class Segment extends ElementRepere {
 		super(couleur);
 		if (origine.equals(destination))
 			throw new IllegalArgumentException("Les deux points d'un segment doivent être distincts.");
-		else {
-			this.origine = origine;
-			this.destination = destination;
-		}
+
+		this.origine = origine;
+		this.destination = destination;
 	}
 
 	public Point getOrigine() {
@@ -40,15 +39,14 @@ public class Segment extends ElementRepere {
 	public boolean equals(Object o) {
 		if (!(o instanceof Segment))
 			return false;
-		else {
-			Segment d = (Segment) o;
-			Set<Point> points = new HashSet<Point>();
-			points.add(d.getOrigine());
-			points.add(d.getDestination());
-			points.add(this.getOrigine());
-			points.add(this.getDestination());
-			return points.size() == 2;
-		}
+
+		Segment d = (Segment) o;
+		Set<Point> points = new HashSet<Point>();
+		points.add(d.getOrigine());
+		points.add(d.getDestination());
+		points.add(this.getOrigine());
+		points.add(this.getDestination());
+		return points.size() == 2;
 	}
 
 	@Override

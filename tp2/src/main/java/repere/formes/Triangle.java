@@ -17,11 +17,10 @@ public class Triangle extends ElementRepere {
 		super(couleur);
 		if ((p1.equals(p2) || p1.equals(p3) || p2.equals(p3)) || aligned(p1, p2, p3))
 			throw new IllegalArgumentException("Les trois points d'un triangle doivent être distincts et non alignés.");
-		else {
-			this.p1 = p1;
-			this.p2 = p2;
-			this.p3 = p3;
-		}
+
+		this.p1 = p1;
+		this.p2 = p2;
+		this.p3 = p3;
 	}
 	
 	private boolean aligned(Point p1, Point p2, Point p3) {
@@ -42,17 +41,16 @@ public class Triangle extends ElementRepere {
 	public boolean equals(Object o) {
 		if ( !(o instanceof Triangle) )
 			return false;
-		else {
-			Triangle t = (Triangle) o;
-			Set<Point> points = new HashSet<Point>();
-			points.add(t.p1);
-			points.add(t.p2);
-			points.add(t.p3);
-			points.add(p1);
-			points.add(p2);
-			points.add(p3);
-			return points.size() == 3;
-		}
+
+		Triangle t = (Triangle) o;
+		Set<Point> points = new HashSet<Point>();
+		points.add(t.p1);
+		points.add(t.p2);
+		points.add(t.p3);
+		points.add(p1);
+		points.add(p2);
+		points.add(p3);
+		return points.size() == 3;
 	}
 
 	@Override

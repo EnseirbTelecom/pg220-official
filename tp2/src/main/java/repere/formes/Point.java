@@ -14,10 +14,9 @@ public class Point extends ElementRepere {
 		super(couleur);
 		if (x < 0 || y < 0)
 			throw new IllegalArgumentException("Les coordonnées d'un point doivent être supérieures à 0.");
-		else {
-			this.x = x;
-			this.y = y;
-		}
+
+		this.x = x;
+		this.y = y;
 	}
 
 	public int getX() {
@@ -37,10 +36,9 @@ public class Point extends ElementRepere {
 	public boolean equals(Object o) {
 		if ( !(o instanceof Point) )
 			return false;
-		else {
-			Point p = (Point) o;
-			return p.x == x && p.y == y;
-		}
+
+		Point p = (Point) o;
+		return p.x == x && p.y == y;
 	}
 
 	@Override
