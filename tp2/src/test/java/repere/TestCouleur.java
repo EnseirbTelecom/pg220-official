@@ -5,6 +5,25 @@ import org.junit.jupiter.api.Test;
 
 public class TestCouleur {
 	@Test
+	public void testCouleurNormale() {
+		Couleur c1 = new Couleur(1, 2, 3);
+		Assertions.assertEquals(1, c1.getR());
+		Assertions.assertEquals(2, c1.getG());
+		Assertions.assertEquals(3, c1.getB());
+	}
+
+	@Test
+	public void testCouleurNoire() {
+		Couleur c1 = Couleur.noir();
+		Assertions.assertEquals(0, c1.getR());
+		Assertions.assertEquals(0, c1.getG());
+		Assertions.assertEquals(0, c1.getB());
+
+		Couleur c2 = Couleur.noir();
+		Assertions.assertTrue(c1 != c2);
+	}
+
+	@Test
 	public void testComposantesTropPetites() {
 		Couleur c1 = new Couleur(-1, -1, -1);
 		Assertions.assertEquals(0, c1.getR());
