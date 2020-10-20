@@ -4,6 +4,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TestAxe {
+	public void testAxe() {
+		Axe a = new Axe(Couleur.noir(), "", 1);
+		Assertions.assertEquals(1, a.getTaille());
+	}
+
 	@Test
 	public void testAxeInconsistent1() {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {

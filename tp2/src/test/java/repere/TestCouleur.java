@@ -13,6 +13,16 @@ public class TestCouleur {
 	}
 
 	@Test
+	public void testCouleurAuHasard() {
+		for (int i = 0; i < 100; i++) {
+			Couleur c = Couleur.auHasard();
+			Assertions.assertTrue(c.getR() >= 0 && c.getR() <= 255);
+			Assertions.assertTrue(c.getG() >= 0 && c.getG() <= 255);
+			Assertions.assertTrue(c.getB() >= 0 && c.getB() <= 255);
+		}
+	}
+
+	@Test
 	public void testCouleurNoire() {
 		Couleur c1 = Couleur.noir();
 		Assertions.assertEquals(0, c1.getR());

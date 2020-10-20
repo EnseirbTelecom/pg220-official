@@ -67,8 +67,8 @@ public class TestTriangle {
 		Assertions.assertNotEquals(t4, t1);
 		Assertions.assertNotEquals(t4, t2);
 		Assertions.assertNotEquals(t4, t3);
-		Assertions.assertNotEquals(null, t1);
-		Assertions.assertNotEquals("foo", t3);
+		Assertions.assertNotEquals(t1, null);
+		Assertions.assertNotEquals(t3, "foo");
 	}
 	
 	@Test

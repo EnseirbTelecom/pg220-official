@@ -32,7 +32,7 @@ public class Segment extends ElementRepere {
 	
 	@Override
 	public int hashCode() {
-		return origine.hashCode() + destination.hashCode();
+		return origine.hashCode() + 2 * destination.hashCode();
 	}
 	
 	@Override

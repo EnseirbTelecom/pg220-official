@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'com.cosminpolifronie.gradle.plantuml' version '1.6.0'
+    id 'info.solidsoft.pitest' version '1.5.2'
 }
 
 repositories {
@@ -15,6 +16,14 @@ plantUml {
     render input: 'doc/design.puml', output: 'doc/design.png', format: 'png', withMetadata: false
 }
 
+pitest {
+    targetClasses = ['repere.*', 'repere.formes.*']
+    threads = 4
+    outputFormats = ['XML', 'HTML']
+    timestampedReports = false
+    junit5PluginVersion = '0.12'
+}
+
 test {
     useJUnitPlatform()
 
@@ -22,6 +31,6 @@ test {
         exceptionFormat = 'full'
         events "passed", "skipped", "failed"
     }
-    }
+}
 
 build.dependsOn ':plantUml'

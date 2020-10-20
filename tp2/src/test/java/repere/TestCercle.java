@@ -52,14 +52,14 @@ public class TestCercle {
 	}
 	
 	@Test
-	public void testCercleEquals() {
+	public void testEquals() {
 		Cercle c1 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 1);
 		Cercle c2 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 1);
 		Assertions.assertEquals(c2, c1);
 		Cercle c3 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 5, 5), 4);
 		Assertions.assertNotEquals(c3, c1);
-		Assertions.assertNotEquals(null, c1);
-		Assertions.assertNotEquals("foo", c1);
+		Assertions.assertNotEquals(c1, null);
+		Assertions.assertNotEquals(c1, "foo");
 	}
 	
 	@Test

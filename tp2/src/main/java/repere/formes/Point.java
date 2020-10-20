@@ -29,7 +29,7 @@ public class Point extends ElementRepere {
 	
 	@Override
 	public int hashCode() {
-		return x + 10 * y;
+		return x + 2 * y;
 	}
 
 	@Override

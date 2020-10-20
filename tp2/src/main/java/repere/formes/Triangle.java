@@ -34,7 +34,7 @@ public class Triangle extends ElementRepere {
 	
 	@Override
 	public int hashCode() {
-		return p1.hashCode() + p2.hashCode() + p3.hashCode();
+		return p1.hashCode() + 2 * p2.hashCode() + 4 * p3.hashCode();
 	}
 
 	@Override

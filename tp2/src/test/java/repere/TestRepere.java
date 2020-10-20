@@ -34,7 +34,7 @@ public class TestRepere {
 			r.ajouter(p1);
 		});
 	}
-	
+
 	@Test
 	public void testSerialisation() throws HorsRepereException, IOException {
 		String def = "Repere titre\n" +

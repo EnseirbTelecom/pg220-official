@@ -9,8 +9,8 @@ public class Axe extends ElementAvecCouleur {
 		this.titre = titre;
 		if (taille < 1)
 			throw new IllegalArgumentException("Une taille d'axe doit être supérieure à 0.");
-		else
-			this.taille = taille;
+
+		this.taille = taille;
 	}
 
 	public String getTitre() {

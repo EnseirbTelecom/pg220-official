@@ -44,8 +44,8 @@ public class TestSegment {
 		Assertions.assertNotEquals(s4, s1);
 		Assertions.assertNotEquals(s4, s2);
 		Assertions.assertNotEquals(s4, s3);
-		Assertions.assertNotEquals(null, s1);
-		Assertions.assertNotEquals("foo", s1);
+		Assertions.assertNotEquals(s1, null);
+		Assertions.assertNotEquals(s1, "foo");
 	}
 	
 	@Test
