@@ -27,11 +27,20 @@ public class TestRepere {
 	}
 
 	@Test
-	public void testAjouterHorsRepere() throws HorsRepereException {
+	public void testAjouterPointHorsRepere() throws HorsRepereException {
 		Repere r = new Repere("", new Axe(Couleur.noir(), "", 20), new Axe(Couleur.noir(), "", 20));
 		Point p1 = new Point(Couleur.noir(), 21, 20);
 		Assertions.assertThrows(HorsRepereException.class, () -> {
 			r.ajouter(p1);
+		});
+	}
+
+	@Test
+	public void testAjouterTriangleHorsRepere() throws HorsRepereException {
+		Repere r = new Repere("", new Axe(Couleur.noir(), "", 20), new Axe(Couleur.noir(), "", 20));
+		Triangle t = new Triangle(Couleur.noir(), new Point(Couleur.noir(), 21, 20), new Point(Couleur.noir(), 0, 0), new Point(Couleur.noir(), 1, 1));
+		Assertions.assertThrows(HorsRepereException.class, () -> {
+			r.ajouter(t);
 		});
 	}
 
