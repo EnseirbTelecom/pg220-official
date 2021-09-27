@@ -14,7 +14,7 @@ public class Cercle extends ElementRepere {
 		if (rayon <= 0)
 			throw new IllegalArgumentException("Le rayon d'un cercle doit être supérieur à 0.");
 		if (centre.getX() - rayon < 0 || centre.getY() - rayon < 0)
-			throw new IllegalArgumentException("Aucune coordonnée du cercle ne doit sortir du repère.");
+			throw new IllegalArgumentException("Aucune coordonnée du cercle ne doit être négative.");
 
 		this.centre = centre;
 		this.rayon = rayon;

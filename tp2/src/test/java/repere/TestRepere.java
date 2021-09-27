@@ -33,6 +33,9 @@ public class TestRepere {
 		Assertions.assertThrows(HorsRepereException.class, () -> {
 			r.ajouter(p1);
 		});
+		Point p2 = new Point(Couleur.noir(), 20, 20);
+		r.ajouter(p2);
+		Assertions.assertEquals(1, r.getElements().size());
 	}
 
 	@Test
@@ -41,6 +44,22 @@ public class TestRepere {
 		Triangle t = new Triangle(Couleur.noir(), new Point(Couleur.noir(), 21, 20), new Point(Couleur.noir(), 0, 0), new Point(Couleur.noir(), 1, 1));
 		Assertions.assertThrows(HorsRepereException.class, () -> {
 			r.ajouter(t);
+		});
+	}
+
+	@Test
+	public void testAjouterCercleHorsRepere() throws HorsRepereException {
+		Repere r = new Repere("", new Axe(Couleur.noir(), "", 5), new Axe(Couleur.noir(), "", 5));
+		Cercle c1 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 1, 1), 1);
+		r.ajouter(c1);
+		Assertions.assertEquals(1, r.getElements().size());
+		Cercle c2 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 3, 4), 2);
+		Assertions.assertThrows(HorsRepereException.class, () -> {
+			r.ajouter(c2);
+		});
+		Cercle c3 = new Cercle(Couleur.noir(), new Point(Couleur.noir(), 4, 3), 2);
+		Assertions.assertThrows(HorsRepereException.class, () -> {
+			r.ajouter(c3);
 		});
 	}
 
