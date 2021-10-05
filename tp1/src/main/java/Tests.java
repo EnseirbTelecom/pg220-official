@@ -42,7 +42,7 @@ class Tests {
 
 		// Tests relatifs à la classe Segment
 		Segment d1 = new Segment("d1", Couleur.blanc(), p1, p2);
-		verifie("longueur segment", d1.getLongueur() == 5D);
+		verifie("longueur segment", d1.getLongueur() == 5.0);
 		verifie("description segment", d1.description().equals("Segment (0,0) -> (0,5), couleur : (255,255,255), titre : d1"));
 
 		// Tests relatifs à la classe EnsembleElementRepere
