@@ -26,7 +26,7 @@ class Tests {
 		// Tests relatifs à la classe Axe
 		Axe x = new Axe("Axe x", -5);
 		Axe y = new Axe("Axe y", 10);
-		verifie("titre axe en minuscules", x.getTitre().equals("AXE X"));
+		verifie("titre axe en majuscules", x.getTitre().equals("AXE X"));
 		verifie("taille axe négative", x.getTaille() == 0);
 		verifie("taille axe normale", y.getTaille() == 10);
 		verifie("description axe", y.description().equals("Axe taille : 10, titre : AXE Y"));
