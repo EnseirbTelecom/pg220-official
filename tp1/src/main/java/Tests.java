@@ -2,7 +2,7 @@
 class Tests {
 	// Point d'entrée qui permet de lancer tous les tests. Au début du TP
 	// certaines lignes de compileront pas (par exemple les lignes relatives
-	// à Droite tant que vous n'avez pas introduit cette class). N'hésitez pas
+	// à Segment tant que vous n'avez pas introduit cette class). N'hésitez pas
 	// à les commenter.
 	// L'exécution des tests se base sur un méthode statique verifie qui est
 	// données à la suite de la méthode main.
@@ -40,7 +40,7 @@ class Tests {
 		verifie("coordonnée point y normale", p2.getY() == 5);
 		verifie("description point", p2.description().equals("Point (0,5), couleur : (255,255,255), titre : p2"));
 
-		// Tests relatifs à la classe Droite
+		// Tests relatifs à la classe Segment
 		Segment d1 = new Segment("d1", Couleur.blanc(), p1, p2);
 		verifie("longueur segment", d1.getLongueur() == 5D);
 		verifie("description segment", d1.description().equals("Segment (0,0) -> (0,5), couleur : (255,255,255), titre : d1"));
