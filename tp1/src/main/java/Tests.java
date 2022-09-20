@@ -2,10 +2,10 @@
 class Tests {
 	// Point d'entrée qui permet de lancer tous les tests. Au début du TP
 	// certaines lignes de compileront pas (par exemple les lignes relatives
-	// à Segment tant que vous n'avez pas introduit cette class). N'hésitez pas
+	// à Segment tant que vous n'avez pas introduit cette classe). N'hésitez pas
 	// à les commenter.
 	// L'exécution des tests se base sur un méthode statique verifie qui est
-	// données à la suite de la méthode main.
+	// donnée à la suite de la méthode main.
 	public static void main(String[] args) {
 		// Tests relatifs à la classe Couleur
 		Couleur c = new Couleur(-12, 258, 13);
