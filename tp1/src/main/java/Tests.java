@@ -9,7 +9,7 @@ class Tests {
 	public static void main(String[] args) {
 		// Tests relatifs à la classe Couleur
 		Couleur c = new Couleur(-12, 258, 13);
-		verifie("composante r négative", c.getR() == 1);
+		verifie("composante r négative", c.getR() == 0);
 		verifie("composante g supérieure à 255", c.getG() == 255);
 		verifie("composante b normale", c.getB() == 13);
 		Couleur n = Couleur.noir();
