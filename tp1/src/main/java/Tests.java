@@ -9,7 +9,7 @@ class Tests {
 	public static void main(String[] args) {
 		// Tests relatifs à la classe Couleur
 		Couleur c = new Couleur(-12, 258, 13);
-		verifie("composante r négative", c.getR() == 0);
+		verifie("composante r négative", c.getR() == 1);
 		verifie("composante g supérieure à 255", c.getG() == 255);
 		verifie("composante b normale", c.getB() == 13);
 		Couleur n = Couleur.noir();
@@ -62,8 +62,8 @@ class Tests {
 
 	public static void verifie(String message, boolean condition) {
 		if (condition)
-			System.out.println("\u001B[32mCONFORME: " + message + "\u001B[0m");
+			System.out.println("\u001B[32m\u001B[1m[OK]\u001B[0m " + message + "\u001B[0m");
 		else
-			System.out.println("\u001B[31mNON CONFORME: " + message + "\u001B[0m");
+			System.out.println("\u001B[31m\u001B[1m[KO] " + message + "\u001B[0m");
 	}
 }
